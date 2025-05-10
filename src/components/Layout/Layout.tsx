@@ -14,10 +14,9 @@ export const Layout: FC<Props> = ({ children }) => {
         component={"main"}
         sx={{
           flexGrow: 1,
-          p: 3,
-          margin: 0,
+          marginTop: 5.4,
           width: "100%",
-          backgroundColor: "#222",
+          backgroundColor: "#fff",
           overflow: "hidden",
         }}
       >
