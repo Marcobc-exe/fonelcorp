@@ -1,0 +1,42 @@
+.appbar {
+  background-color: #fff;
+  height: 80px;
+  justify-content: center;
+}
+
+.toolbar {
+  background-color: #fff;
+  position: relative;
+}
+
+.logoNavBar {
+  height: 40px;
+}
+
+.content-box {
+  position: absolute;
+  right: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.btn-content {
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;  
+  background: transparent;
+  color: #1F355E;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-content:hover {
+  opacity: .6;
+}
+
+.menu {
+  position: absolute;
+  right: 20px;
+  color: #1F355E;
+}
