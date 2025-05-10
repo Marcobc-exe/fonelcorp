@@ -1,20 +1,25 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import "./hero.css";
+import { Typography } from "../Typography/Typography";
 
 export const HeroTitle = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+  const isDesktop = useMediaQuery(theme.breakpoints.between("md", "lg"));
+  const isDesktopXl = useMediaQuery(theme.breakpoints.between("lg", "xl"));
+  const isDesktopXxl = useMediaQuery(theme.breakpoints.up("xl"));
 
   return (
-    <Box 
-      className="box-hero" 
-      component='div'
+    <Box
+      className="box-hero"
+      component="div"
       height={{
-        xs: '400px',
-        sm: '500px',
-        md: '600px',
-        lg: '700px',
-        xl: '800px',
+        xs: "400px",
+        sm: "500px",
+        md: "600px",
+        lg: "700px",
+        xl: "800px",
       }}
     >
       <Box
@@ -34,13 +39,13 @@ export const HeroTitle = () => {
             xl: -45,
           },
           width: {
-            xs: '150%',
-            sm: '120%',
-            md: '100%',
-            lg: '95%',
-            xl: '80%'
+            xs: "150%",
+            sm: "120%",
+            md: "100%",
+            lg: "95%",
+            xl: "80%",
           },
-          height: '100%'
+          height: "100%",
         }}
       />
       <Box
@@ -54,14 +59,14 @@ export const HeroTitle = () => {
           left: {
             xs: -285,
             lg: -450,
-            xl: -350
+            xl: -350,
           },
           width: {
-            xs: window.innerWidth <= 425 ? '180%' : '120%',
-            md: '110%',
-            xl: '100%',
+            xs: window.innerWidth <= 425 ? "180%" : "120%",
+            md: "110%",
+            xl: "100%",
           },
-          height: '100%'
+          height: "100%",
         }}
       />
       <Box
@@ -73,25 +78,149 @@ export const HeroTitle = () => {
           objectFit: "cover",
           zIndex: 3,
           height: {
-            xs: '55px',
-            md: '70px',
-            xl: '90px'
+            xs: "55px",
+            md: "70px",
+            xl: "90px",
           },
           width: {
-            xs: '150px',
-            md: '190px',
-            xl: '240px'
+            xs: "150px",
+            md: "190px",
+            xl: "240px",
           },
           top: {
-            xs: '10%',
-            xl: '5%'
+            xs: "10%",
+            xl: "5%",
           },
           left: {
-            xs: '55%',
-            xl: '60%'
-          }
+            xs: "55%",
+            xl: "60%",
+          },
         }}
       />
+      {isMobile && (
+        <Box
+          id="isMobile"
+          className="box-hero-title"
+          component={"div"}
+          height={{
+            xs: "300px",
+            sm: "320px",
+          }}
+          width={{
+            xs: "200px",
+          }}
+          sx={{
+            marginLeft: "12px",
+            marginTop: "12px",
+          }}
+        >
+          <Typography variant="h6">
+            24/7 Reliable Roadside Assistance
+          </Typography>
+          <Typography variant="h5">Calgary &</Typography>
+          <Typography variant="h5">Edmonton</Typography>
+          <button className="btn-contact-now">Call now!</button>
+        </Box>
+      )}
+      {isTablet && (
+        <Box
+          id="isTablet"
+          className="box-hero-title"
+          component={"div"}
+          height={{
+            sm: "320px",
+            md: "350px",
+          }}
+          width={{
+            sm: "400px",
+            md: "500px",
+          }}
+          sx={{
+            marginLeft: "12px",
+            marginTop: "12px",
+          }}
+        >
+          <Typography variant="h2">
+            24/7 Reliable Roadside Assistance
+          </Typography>
+          <Typography variant="subtitle1">Calgary & Edmonton</Typography>
+          <button className="btn-contact-now subtitle1">Call now!</button>
+        </Box>
+      )}
+      {isDesktop && (
+        <Box
+          id="isDesktop"
+          className="box-hero-title"
+          component={"div"}
+          height={{
+            md: "350px",
+            lg: "380px",
+          }}
+          width={{ md: "400px" }}
+          sx={{ marginLeft: "12px", marginTop: "12px" }}
+        >
+          <Typography variant="subtitle2" lineHeight={1.2}>
+            24/7 Reliable Roadside Assistance
+          </Typography>
+          <Typography variant="subtitle1">Calgary & Edmonton</Typography>
+          <button className="btn-contact-now subtitle2">Call now!</button>
+        </Box>
+      )}
+      {isDesktopXl && (
+        <Box
+          id="isDesktopXl"
+          className="box-hero-title"
+          component={"div"}
+          height={{
+            lg: "380px",
+          }}
+          width={{ lg: "500px" }}
+          sx={{ marginLeft: "12px", marginTop: "24px" }}
+        >
+          <Typography variant="h1" lineHeight={1.2}>
+            24/7 Reliable Roadside Assistance
+          </Typography>
+          <Typography variant="h3">Calgary & Edmonton</Typography>
+          <button className="btn-contact-now subtitle3">Call now!</button>
+        </Box>
+      )}
+      {isDesktopXxl && (
+        <Box
+          id="isDesktopXxl"
+          className="box-hero-title"
+          component={"div"}
+          height={{
+            lg: "380px",
+          }}
+          width={{ xl: "800px" }}
+          sx={{
+            marginLeft: "24px",
+            marginTop: "54px",
+          }}
+        >
+          <Typography
+            lineHeight={1.2}
+            sx={{
+              fontWeight: 600,
+              fontSize: "5rem",
+              color: "#1F355E",
+            }}
+          >
+            24/7 Reliable Roadside Assistance
+          </Typography>
+          <Typography
+            sx={{
+              fontWeight: 600,
+              fontSize: "3.3rem",
+              color: "#1F355E",
+              width: "900px",
+            }}
+          >
+            Calgary & Edmonton
+          </Typography>
+          <button className="btn-contact-now subtitle4">Call now!</button>
+        </Box>
+      )}
     </Box>
   );
 };
