@@ -1,3 +1,4 @@
+import type { IconService, ReasonService } from "../types/iconService";
 import type { ServiceCard } from "../types/service";
 
 export const listServiceCard: ServiceCard[] = [
@@ -32,3 +33,49 @@ export const listServiceCard: ServiceCard[] = [
     desc: "Ran out of gas? We deliver fuel directly to your location.",
   },
 ];
+
+export const listIconService: IconService[] = [
+  {
+    id: 1,
+    image: './images/icon-tire.png',
+    title: 'Tire Change'
+  },
+  {
+    id: 2,
+    image: './images/icon-battery-boost.png',
+    title: 'Battery Boost'
+  },
+  {
+    id: 3,
+    image: './images/icon-lockout.png',
+    title: 'Lockout Service'
+  },
+  {
+    id: 4,
+    image: './images/icon-fuel.png',
+    title: 'Fuel Delivery'
+  },
+  {
+    id: 5,
+    image: './images/icon-battery-replace.png',
+    title: 'Baterry Replacement'
+  },
+];
+
+export const listReason: ReasonService[] = [
+  {
+    id: 1,
+    title: 'Professional technicians',
+    desc: '"Certified, friendly experts at your service."'
+  },
+  {
+    id: 2,
+    title: 'Affordable rates',
+    desc: '"Transparent pricing with no hidden fees."'
+  },
+  {
+    id: 3,
+    title: '24/7 Availability',
+    desc: '"Availability anytime, anywhere in Edmonton and Calgary area."'
+  },
+]
