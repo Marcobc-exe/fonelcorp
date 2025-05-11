@@ -1,13 +1,8 @@
 import type { FC } from "react";
 import type { ReasonService } from "../../types/iconService";
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 
 export const ReasonCard: FC<ReasonService> = (reason) => {
-  const theme = useTheme();
-  // const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  // const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
-  // const isTablet = useMediaQuery(theme.breakpoints.down("lg"));
-
   return (
     <Box
       key={reason.id}

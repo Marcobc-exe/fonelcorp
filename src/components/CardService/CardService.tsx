@@ -1,15 +1,18 @@
-import { Card, CardContent, CardMedia } from "@mui/material";
+import { Card, CardContent, CardMedia, useMediaQuery, useTheme } from "@mui/material";
 import type { FC } from "react";
 import type { ServiceCard } from "../../types/service";
 
 export const CardService: FC<ServiceCard> = (service) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  
   return (
     <Card
       key={service.id}
       sx={{
-        minWidth: "400px",
-        maxWidth: "400px",
-        height: "570px",
+        minWidth: isMobile ? "250px" : "400px",
+        maxWidth: isMobile ? "250px" : "400px",
+        height: isMobile ? "350px" : "570px",
         bgcolor: "transparent",
         display: "flex",
         flexDirection: "column",
@@ -25,9 +28,9 @@ export const CardService: FC<ServiceCard> = (service) => {
           aspectRatio: 16 / 9,
           objectFit: "cover",
           borderRadius: 110,
-          maxWidth: "360px",
-          minWidth: "360px",
-          minHeight: "360px",
+          maxWidth: isMobile ? "150px" : "360px",
+          minWidth: isMobile ? "150px" : "360px",
+          minHeight: isMobile ? "150px" : "360px",
         }}
       />
       <CardContent>
@@ -35,7 +38,7 @@ export const CardService: FC<ServiceCard> = (service) => {
           style={{
             color: "#FF4D00",
             textAlign: "center",
-            fontSize: 34,
+            fontSize: isMobile ? 26 : 34,
             fontWeight: "bold",
             margin: 0,
           }}
@@ -47,7 +50,7 @@ export const CardService: FC<ServiceCard> = (service) => {
             color: "#1F355E",
             textAlign: "center",
             fontWeight: "bold",
-            fontSize: 26,
+            fontSize: isMobile ? 16 : 26,
             paddingInline: "45px",
           }}
         >

@@ -1,9 +1,12 @@
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { Typography } from "../Typography/Typography";
 import { CardService } from "../CardService/CardService";
 import { listServiceCard } from "../../const/const";
 
 export const OurServices = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Box
       component={"div"}
@@ -18,13 +21,13 @@ export const OurServices = () => {
       <Box
         component={"div"}
         sx={{
-          marginInline: "120px",
+          marginInline: isMobile ? "60px" : "120px",
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
           alignItems: "flex-start",
-          gap: "10px",
-          rowGap: "60px",
+          gap: isMobile ? "0px" : "10px",
+          rowGap: isMobile ? "0px" : "60px",
         }}
       >
         {listServiceCard.map((service) => (
