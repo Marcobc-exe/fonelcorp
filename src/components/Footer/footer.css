@@ -1,0 +1,25 @@
+#btnContact {
+  justify-content: start;
+  color: #294971;
+}
+
+#btnContact:hover {
+  background-color: transparent;
+  opacity: .6;
+}
+
+#btnAboutUs {
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;  
+  background: transparent;
+  color: #1F355E;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: none;
+  justify-content: start;
+}
+
+#btnAboutUs:hover {
+  opacity: .6;
+}
