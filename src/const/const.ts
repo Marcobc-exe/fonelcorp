@@ -37,45 +37,55 @@ export const listServiceCard: ServiceCard[] = [
 export const listIconService: IconService[] = [
   {
     id: 1,
-    image: './images/icon-tire.png',
-    title: 'Tire Change'
+    image: "./images/icon-tire.png",
+    title: "Tire Change",
   },
   {
     id: 2,
-    image: './images/icon-battery-boost.png',
-    title: 'Battery Boost'
+    image: "./images/icon-battery-boost.png",
+    title: "Battery Boost",
   },
   {
     id: 3,
-    image: './images/icon-lockout.png',
-    title: 'Lockout Service'
+    image: "./images/icon-lockout.png",
+    title: "Lockout Service",
   },
   {
     id: 4,
-    image: './images/icon-fuel.png',
-    title: 'Fuel Delivery'
+    image: "./images/icon-fuel.png",
+    title: "Fuel Delivery",
   },
   {
     id: 5,
-    image: './images/icon-battery-replace.png',
-    title: 'Baterry Replacement'
+    image: "./images/icon-battery-replace.png",
+    title: "Baterry Replacement",
   },
 ];
 
 export const listReason: ReasonService[] = [
   {
     id: 1,
-    title: 'Professional technicians',
-    desc: '"Certified, friendly experts at your service."'
+    title: "Professional technicians",
+    desc: '"Certified, friendly experts at your service."',
   },
   {
     id: 2,
-    title: 'Affordable rates',
-    desc: '"Transparent pricing with no hidden fees."'
+    title: "Affordable rates",
+    desc: '"Transparent pricing with no hidden fees."',
   },
   {
     id: 3,
-    title: '24/7 Availability',
-    desc: '"Availability anytime, anywhere in Edmonton and Calgary area."'
+    title: "24/7 Availability",
+    desc: '"Availability anytime, anywhere in Edmonton and Calgary area."',
   },
-]
+];
+
+export const about = [
+  "Home",
+  "Services",
+  "Areas Covered",
+  "Contact",
+  "Privacy Policy",
+];
+
+export const content = ["Home", "Services", "Areas Covered", "Contact"];

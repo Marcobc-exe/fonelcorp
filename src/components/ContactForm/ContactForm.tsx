@@ -2,7 +2,7 @@ import { Box, Grid } from "@mui/material";
 import { Typography } from "../Typography/Typography";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { Input } from "../Input/Input";
-import { EmailOutlined, Phone, WhatsApp } from "@mui/icons-material";
+import { EmailOutlined, PhoneOutlined, WhatsApp } from "@mui/icons-material";
 import { Button } from "../Button/Button";
 import './contactForm.css'
 
@@ -121,7 +121,7 @@ export const ContactForm = () => {
             bgcolor={"#FFF1CE"}
             borderRadius={"15px"}
           >
-            <Button startIcon={<Phone />}>+1 123-456-7890</Button>
+            <Button startIcon={<PhoneOutlined />}>+1 123-456-7890</Button>
           </Grid>
 
           <Grid

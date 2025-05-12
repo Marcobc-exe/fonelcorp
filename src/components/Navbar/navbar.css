@@ -35,8 +35,11 @@
   opacity: .6;
 }
 
-.menu {
+.btnIconMenu {
+  color: #1F355E;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
   position: absolute;
   right: 20px;
-  color: #1F355E;
 }

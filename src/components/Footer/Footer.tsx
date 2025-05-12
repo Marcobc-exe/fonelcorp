@@ -1,17 +1,10 @@
 import { Box, Button, Grid } from "@mui/material";
 import { Typography } from "../Typography/Typography";
-import { EmailOutlined, Phone, WhatsApp } from "@mui/icons-material";
+import { EmailOutlined, PhoneOutlined, WhatsApp } from "@mui/icons-material";
 import "./footer.css";
+import { about } from "../../const/const";
 
 export const Footer = () => {
-  const about = [
-    "Home",
-    "Services",
-    "Areas Covered",
-    "Contact",
-    "Privacy Policy",
-  ];
-
   return (
     <Grid
       container
@@ -50,7 +43,7 @@ export const Footer = () => {
           flexDirection={"column"}
           alignItems={"left"}
         >
-          <Button id="btnContact" startIcon={<Phone />}>
+          <Button id="btnContact" startIcon={<PhoneOutlined />}>
             +1 123-456-7890
           </Button>
           <Button id="btnContact" startIcon={<EmailOutlined />}>
