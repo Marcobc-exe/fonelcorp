@@ -28,14 +28,14 @@ export const AreasCovered = () => {
           component={'img'}
           src={'./images/calgary-map.jpg'}
           sx={{
-            width: '450px'
+            width: window.innerWidth < 380 ? '300px' : '450px'
           }}
         />
         <Box
           component={'img'}
           src={'./images/edmonton-map.jpg'}
           sx={{
-            width: '450px'
+            width: window.innerWidth < 380 ? '300px' : '450px'
           }}
         />
       </Box>
