@@ -42,6 +42,7 @@ export const ContactForm = () => {
       position={"relative"}
     >
       <Typography
+        id="contact"
         variant="h2"
         textAlign={"center"}
         marginBottom={10}

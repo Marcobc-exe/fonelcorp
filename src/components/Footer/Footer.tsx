@@ -5,6 +5,17 @@ import "./footer.css";
 import { about } from "../../const/const";
 
 export const Footer = () => {
+  const handleAutoScroll = (target: string) => {
+    if (target === 'policy') {
+      console.log('handle policy view')
+    } else {
+      const el = document.getElementById(target);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  };
+
   return (
     <Grid
       container
@@ -12,12 +23,12 @@ export const Footer = () => {
       bgcolor={"#FFF"}
       paddingInline={"60px"}
       paddingTop={"60px"}
-      paddingBottom={'30px'}
+      paddingBottom={"30px"}
       position={"relative"}
       size={{ xs: 12, sm: 12, md: 4 }}
       rowGap={5}
       columnGap={3.5}
-      justifyContent={'center'}
+      justifyContent={"center"}
     >
       <Grid component={"div"} size={{ xs: 12, sm: 4, md: 6, lg: 2.8 }}>
         <Box component={"img"} src="./logo.png" width={100} />
@@ -85,7 +96,12 @@ export const Footer = () => {
           alignItems={"left"}
         >
           {about.map((item) => (
-            <Button id={`btnAboutUs`}>{item}</Button>
+            <Button
+              id={`btnAboutUs`}
+              onClick={() => handleAutoScroll(item.target)}
+            >
+              {item.label}
+            </Button>
           ))}
         </Box>
       </Grid>

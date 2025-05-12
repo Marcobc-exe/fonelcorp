@@ -12,6 +12,7 @@ export const HeroTitle = () => {
 
   return (
     <Box
+      id="home"
       className="box-hero"
       component="div"
       height={{

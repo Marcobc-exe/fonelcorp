@@ -4,3 +4,8 @@ export type ServiceCard = {
   title: string;
   desc: string;
 };
+
+export type Content = {
+  label: string;
+  target: string;
+}

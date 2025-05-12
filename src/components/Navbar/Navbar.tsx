@@ -15,6 +15,14 @@ export const Navbar = () => {
     setOpen(value);
   };
 
+  const handleAutoScroll = (target: string) => {
+    const el = document.getElementById(target);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      toggleMenu(false);
+    }
+  };
+
   return (
     <>
       <AppBar>
@@ -32,15 +40,19 @@ export const Navbar = () => {
           ) : (
             <Box className="content-box">
               {content.map((c) => (
-                <button key={c} className="btn-content">
-                  {c}
+                <button
+                  key={c.target}
+                  className="btn-content"
+                  onClick={() => handleAutoScroll(c.target)}
+                >
+                  {c.label}
                 </button>
               ))}
             </Box>
           )}
         </Toolbar>
       </AppBar>
-      <MenuMobile open={open} toggleMenu={toggleMenu} />
+      <MenuMobile open={open} toggleMenu={toggleMenu} handleAutoScroll={handleAutoScroll} />
     </>
   );
 };

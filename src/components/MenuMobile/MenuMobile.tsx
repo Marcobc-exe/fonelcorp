@@ -8,9 +8,10 @@ import './menuMobile.css'
 type Props = {
   open: boolean;
   toggleMenu: (value: boolean) => void;
+  handleAutoScroll: (target: string) => void;
 }
 
-export const MenuMobile: FC<Props> = ({ open, toggleMenu }) => {
+export const MenuMobile: FC<Props> = ({ open, toggleMenu, handleAutoScroll }) => {
   return (
     <Drawer anchor="right" open={open} onClose={() => toggleMenu(false)}>
       <Box
@@ -25,10 +26,10 @@ export const MenuMobile: FC<Props> = ({ open, toggleMenu }) => {
         onClick={() => toggleMenu(false)}
       >
         <List>
-          {content.map((text) => (
-            <ListItem button key={text}>
-              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                {text}
+          {content.map((c) => (
+            <ListItem button key={c.target}>
+              <Typography variant="body1" sx={{ fontWeight: "bold" }} onClick={() => handleAutoScroll(c.target)}>
+                {c.label}
               </Typography>
             </ListItem>
           ))}

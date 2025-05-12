@@ -9,7 +9,7 @@ export const AreasCovered = () => {
       paddingInline={"30px"}
       paddingBlock={"50px"}
     >
-      <Typography variant="h2" textAlign={"center"} marginBottom={10}>
+      <Typography id={'areas'} variant="h2" textAlign={"center"} marginBottom={10}>
         AREAS COVERED
       </Typography>
 

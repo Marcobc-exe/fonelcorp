@@ -1,5 +1,5 @@
 import type { IconService, ReasonService } from "../types/iconService";
-import type { ServiceCard } from "../types/service";
+import type { Content, ServiceCard } from "../types/service";
 
 export const listServiceCard: ServiceCard[] = [
   {
@@ -80,12 +80,17 @@ export const listReason: ReasonService[] = [
   },
 ];
 
-export const about = [
-  "Home",
-  "Services",
-  "Areas Covered",
-  "Contact",
-  "Privacy Policy",
+export const about: Content[] = [
+  { label: "Home", target: "home" },
+  { label: "Services", target: "services" },
+  { label: "Areas Covered", target: "areas" },
+  { label: "Contact", target: "contact" },
+  { label: "Privacy Policy", target: "policy" },
 ];
 
-export const content = ["Home", "Services", "Areas Covered", "Contact"];
+export const content: Content[] = [
+  { label: "Home", target: "home" },
+  { label: "Services", target: "services" },
+  { label: "Areas Covered", target: "areas" },
+  { label: "Contact", target: "contact" },
+];
