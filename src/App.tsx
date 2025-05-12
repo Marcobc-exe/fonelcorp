@@ -4,6 +4,7 @@ import { HeroTitle } from './components/HeroTitle/HeroTittle'
 import { OurServices } from './components/OurServices/OurServices'
 import { ChooseUs } from './components/ChooseUs/ChooseUs'
 import { AreasCovered } from './components/AreasCovered/AreasCovered'
+import { ContactForm } from './components/ContactForm/ContactForm'
 
 const App = () => {
 
@@ -13,6 +14,7 @@ const App = () => {
       <OurServices />
       <AreasCovered />
       <ChooseUs />
+      <ContactForm />
     </Layout>
   )
 }

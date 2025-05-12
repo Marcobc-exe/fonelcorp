@@ -1,41 +1,27 @@
-import MUIButton from "@mui/material/Button";
-import {
-  CircularProgress,
-  type ButtonProps as MUIButtonProps,
-} from "@mui/material";
+import { Button as MUIButton, styled } from "@mui/material";
 
-export interface CustomButtonProps extends MUIButtonProps {
-  loading?: boolean;
-}
-
-export const Button: React.FC<CustomButtonProps> = ({
-  variant = 'contained',
-  color = 'primary',
-  loading = false,
-  disabled,
-  children,
-  ...props
-}) => {
-  return (
-    <MUIButton
-      variant={variant}
-      color={color}
-      disabled={disabled || loading}
-      sx={{
-        transition: 'all 0.3s ease',
-        fontFamily: 'Archivo Narrow',
-        '&:hover': {
-          backgroundColor: (theme) => theme.palette.secondary.dark,
-          boxShadow: 'none',
-        },
-        '&:focus': {
-          outline: 'none',
-        },
-      }}
-      
-      {...props}
-    >
-      {loading ? <CircularProgress size={20} color="inherit" /> : children}
-    </MUIButton>
-  );
-};
+export const Button = styled(MUIButton)({
+  textTransform: "none",
+  boxShadow: "none",
+  fontWeight: "bold",
+  lineHeight: 1.5,
+  fontSize: 16,
+  width: "100%",
+  paddingInline: "10px",
+  paddingBlock: "5px",
+  borderRadius: "15px",
+  color: "#294971",
+  bgcolor: "#FFF1CE",
+  height: "56px",
+  "&:hover": {
+    backgroundColor: "#FFF1CE",
+    boxShadow: '5px 5px 0px 0 #294971',
+  },
+  "&:active": {
+    boxShadow: "none",
+    backgroundColor: "#0062cc",
+  },
+  "&:focus": {
+    boxShadow: "none",
+  },
+});
