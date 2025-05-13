@@ -234,7 +234,7 @@ export const HeroTitle = () => {
           <Typography
             sx={{
               fontWeight: 600,
-              fontSize: "3.3rem",
+              fontSize: "3rem",
               color: "#1F355E",
               width: "900px",
             }}

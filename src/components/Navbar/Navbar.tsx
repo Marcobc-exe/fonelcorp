@@ -27,12 +27,14 @@ export const Navbar = () => {
     <>
       <AppBar>
         <Toolbar className="toolbar">
-          <Box
-            component={"img"}
-            className="logoNavBar"
-            src="./logo.png"
-            alt="Fonel Corp logo"
-          />
+          <button className="btnLogoNavbar" onClick={() => handleAutoScroll('home')}>
+            <Box
+              component={"img"}
+              className="logoNavBar"
+              src="./logo.png"
+              alt="Fonel Corp logo"
+            />
+          </button>
           {isMobile ? (
             <button onClick={() => toggleMenu(true)} className="btnIconMenu">
               <Menu />

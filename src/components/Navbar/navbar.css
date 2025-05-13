@@ -9,6 +9,12 @@
   position: relative;
 }
 
+.btnLogoNavbar {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .logoNavBar {
   height: 40px;
 }
