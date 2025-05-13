@@ -16,7 +16,7 @@ export const ChooseUs = () => {
       paddingInline={"30px"}
       paddingBlock={"50px"}
     >
-      <p
+      <div
         style={{
           margin: 0,
           padding: 0,
@@ -32,7 +32,7 @@ export const ChooseUs = () => {
         >
           WHY CHOOSE OUR ROADSIDE ASSTANCE?
         </Typography>
-      </p>
+      </div>
 
       <Box
         component={"div"}

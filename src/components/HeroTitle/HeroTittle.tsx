@@ -1,6 +1,8 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import "./hero.css";
 import { Typography } from "../Typography/Typography";
+import { MotBox } from "../MotionComponents/MoTitleBox";
+import { MotionBox } from "../MotionComponents/MuiMotion/MuiMotion";
 
 export const HeroTitle = () => {
   const theme = useTheme();
@@ -75,9 +77,17 @@ export const HeroTitle = () => {
           height: "100%",
         }}
       />
-      <Box
+      <MotionBox
         component="img"
         src={"./images/title-img-cloud.png"}
+        initial={{ transform: "translate(-10px, -2px)" }}
+        animate={{ transform: "translate(10px, 2px)" }}
+        transition={{
+          type: "tween",
+          repeat: Infinity,
+          duration: 2,
+          repeatType: "reverse",
+        }}
         sx={{
           position: "absolute",
           aspectRatio: 16 / 9,
@@ -104,7 +114,7 @@ export const HeroTitle = () => {
         }}
       />
       {isMobile && (
-        <Box
+        <MotBox
           id="isMobile"
           className="box-hero-title"
           component={"div"}
@@ -128,10 +138,10 @@ export const HeroTitle = () => {
           <button className="btn-contact-now" onClick={() => handleCallNow()}>
             Call now!
           </button>
-        </Box>
+        </MotBox>
       )}
       {isTablet && (
-        <Box
+        <MotBox
           id="isTablet"
           className="box-hero-title"
           component={"div"}
@@ -158,10 +168,10 @@ export const HeroTitle = () => {
           >
             Call now!
           </button>
-        </Box>
+        </MotBox>
       )}
       {isDesktop && (
-        <Box
+        <MotBox
           id="isDesktop"
           className="box-hero-title"
           component={"div"}
@@ -182,10 +192,10 @@ export const HeroTitle = () => {
           >
             Call now!
           </button>
-        </Box>
+        </MotBox>
       )}
       {isDesktopXl && (
-        <Box
+        <MotBox
           id="isDesktopXl"
           className="box-hero-title"
           component={"div"}
@@ -205,13 +215,12 @@ export const HeroTitle = () => {
           >
             Call now!
           </button>
-        </Box>
+        </MotBox>
       )}
       {isDesktopXxl && (
-        <Box
+        <MotBox
           id="isDesktopXxl"
           className="box-hero-title"
-          component={"div"}
           height={{
             lg: "380px",
           }}
@@ -247,7 +256,7 @@ export const HeroTitle = () => {
           >
             Call now!
           </button>
-        </Box>
+        </MotBox>
       )}
     </Box>
   );

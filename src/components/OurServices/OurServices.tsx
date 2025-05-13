@@ -1,7 +1,7 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
-import { Typography } from "../Typography/Typography";
 import { CardService } from "../CardService/CardService";
 import { listServiceCard } from "../../const/const";
+import { MotionTypography } from "../MotionComponents/MuiMotion/MuiMotion";
 
 export const OurServices = () => {
   const theme = useTheme();
@@ -14,9 +14,16 @@ export const OurServices = () => {
       paddingInline={"30px"}
       paddingBlock={"50px"}
     >
-      <Typography id="services" variant="h2" textAlign={"center"} marginBottom={10}>
+      <MotionTypography
+        id="services"
+        variant="h2"
+        textAlign={"center"}
+        marginBottom={10}
+        initial={{ opacity: 0, transform: "translateY(-60px)" }}
+        animate={{ opacity: 1, transform: "translateY(0)", transition: { duration: .3 } }}
+      >
         OUR SERVICES
-      </Typography>
+      </MotionTypography>
 
       <Box
         component={"div"}

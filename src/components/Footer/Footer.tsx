@@ -101,6 +101,7 @@ export const Footer: FC<Props> = ({ handleModal }) => {
         >
           {about.map((item) => (
             <Button
+              key={item.target}
               id={`btnAboutUs`}
               onClick={() => handleAutoScroll(item.target)}
             >
