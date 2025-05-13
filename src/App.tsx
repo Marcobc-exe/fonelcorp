@@ -10,7 +10,7 @@ import { PPModal } from "./components/PPModal.tsx/PPModal";
 import { useState } from "react";
 
 const App = () => {
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleModal = (value: boolean) => {
     setOpenModal(value);
