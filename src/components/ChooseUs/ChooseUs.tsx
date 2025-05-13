@@ -3,6 +3,7 @@ import { Typography } from "../Typography/Typography";
 import { IconService } from "../IconService/IconService";
 import { listIconService, listReason } from "../../const/const";
 import { ReasonCard } from "../ReasonCard/ReasonCard";
+import { MotionTypography } from "../MotionComponents/MuiMotion";
 
 export const ChooseUs = () => {
   const theme = useTheme();
@@ -24,14 +25,18 @@ export const ChooseUs = () => {
           justifyContent: "center",
         }}
       >
-        <Typography
+        <MotionTypography
           variant="h2"
           textAlign={"center"}
           marginBottom={10}
           width={550}
+          initial={{ opacity: 0, y: -60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.4 }}
         >
           WHY CHOOSE OUR ROADSIDE ASSTANCE?
-        </Typography>
+        </MotionTypography>
       </div>
 
       <Box

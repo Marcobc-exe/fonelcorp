@@ -1,13 +1,14 @@
-import { Card, CardContent, CardMedia, useMediaQuery, useTheme } from "@mui/material";
+import { CardContent, CardMedia, useMediaQuery, useTheme } from "@mui/material";
 import type { FC } from "react";
 import type { ServiceCard } from "../../types/service";
+import { MotionCard } from "../MotionComponents/MuiMotion";
 
 export const CardService: FC<ServiceCard> = (service) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   
   return (
-    <Card
+    <MotionCard
       key={service.id}
       sx={{
         minWidth: isMobile ? "250px" : "400px",
@@ -19,6 +20,10 @@ export const CardService: FC<ServiceCard> = (service) => {
         alignItems: "center",
         boxShadow: "none",
       }}
+      initial={{ y: -570, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 1.2 }}
+      viewport={{ once: true, amount: .4 }}
     >
       <CardMedia
         component={"img"}
@@ -57,6 +62,6 @@ export const CardService: FC<ServiceCard> = (service) => {
           {service.desc}
         </p>
       </CardContent>
-    </Card>
+    </MotionCard>
   );
 };

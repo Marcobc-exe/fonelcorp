@@ -1,10 +1,5 @@
 import type { Theme } from "@emotion/react";
-import {
-  Grid,
-  TextField,
-  type SxProps,
-  type TextFieldVariants,
-} from "@mui/material";
+import { TextField, type SxProps, type TextFieldVariants } from "@mui/material";
 import {
   Controller,
   type Path,
@@ -12,6 +7,7 @@ import {
   type FieldValues,
   type RegisterOptions,
 } from "react-hook-form";
+import { MotionGrid } from "../MotionComponents/MuiMotion";
 
 type Props<T extends FieldValues> = {
   rows?: number;
@@ -28,6 +24,10 @@ type Props<T extends FieldValues> = {
   sx?: SxProps<Theme>;
   type?: React.HTMLInputTypeAttribute;
   size?: number;
+  initial?: { opacity?: number; x?: number; y?: number };
+  whileInView?: { opacity?: number; x?: number; y?: number };
+  transition?: { duration?: number };
+  viewport?: { once?: boolean; amount: number };
 };
 
 export const Input = <T extends FieldValues>({
@@ -53,6 +53,10 @@ export const Input = <T extends FieldValues>({
   multiline = false,
   type,
   size,
+  initial,
+  whileInView,
+  transition,
+  viewport,
 }: Props<T>) => {
   return (
     <Controller
@@ -60,7 +64,13 @@ export const Input = <T extends FieldValues>({
       rules={rules}
       control={control}
       render={({ field: { value, onChange, ref }, fieldState: { error } }) => (
-        <Grid size={{ xs: 12, sm: 12, md: size ?? 12 }}>
+        <MotionGrid
+          size={{ xs: 12, sm: 12, md: size ?? 12 }}
+          initial={initial}
+          whileInView={whileInView}
+          transition={transition}
+          viewport={viewport}
+        >
           <TextField
             required
             ref={ref}
@@ -90,7 +100,7 @@ export const Input = <T extends FieldValues>({
               },
             }}
           />
-        </Grid>
+        </MotionGrid>
       )}
     />
   );

@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { Typography } from "../Typography/Typography";
+import { MotionBox, MotionTypography } from "../MotionComponents/MuiMotion";
 
 export const AreasCovered = () => {
   return (
@@ -9,34 +9,51 @@ export const AreasCovered = () => {
       paddingInline={"30px"}
       paddingBlock={"50px"}
     >
-      <Typography id={'areas'} variant="h2" textAlign={"center"} marginBottom={10}>
+      <MotionTypography
+        id={"areas"}
+        variant="h2"
+        textAlign={"center"}
+        marginBottom={10}
+        initial={{ opacity: 0, y: -60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.4 }}
+      >
         AREAS COVERED
-      </Typography>
+      </MotionTypography>
 
       <Box
-        component={'div'}
+        component={"div"}
         sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          justifyContent: "center",
           gap: 8,
-          marginBottom: 10
+          marginBottom: 10,
         }}
       >
-        <Box
-          component={'img'}
-          src={'./images/calgary-map.jpg'}
+        <MotionBox
+          component={"img"}
+          src={"./images/calgary-map.jpg"}
           sx={{
-            width: window.innerWidth < 380 ? '300px' : '450px'
+            width: window.innerWidth < 380 ? "300px" : "450px",
           }}
+          initial={{ x: -500 }}
+          whileInView={{ x: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
         />
-        <Box
-          component={'img'}
-          src={'./images/edmonton-map.jpg'}
+        <MotionBox
+          component={"img"}
+          src={"./images/edmonton-map.jpg"}
           sx={{
-            width: window.innerWidth < 380 ? '300px' : '450px'
+            width: window.innerWidth < 380 ? "300px" : "450px",
           }}
+          initial={{ x: 500 }}
+          whileInView={{ x: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
         />
       </Box>
     </Box>

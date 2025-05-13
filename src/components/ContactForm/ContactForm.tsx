@@ -1,10 +1,10 @@
 import { Box, Grid } from "@mui/material";
-import { Typography } from "../Typography/Typography";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { Input } from "../Input/Input";
 import { EmailOutlined, PhoneOutlined, WhatsApp } from "@mui/icons-material";
 import { Button } from "../Button/Button";
 import './contactForm.css'
+import { MotionGrid, MotionTypography } from "../MotionComponents/MuiMotion";
 
 type Inputs = {
   name: string;
@@ -41,15 +41,19 @@ export const ContactForm = () => {
       paddingBlock={"50px"}
       position={"relative"}
     >
-      <Typography
+      <MotionTypography
         id="contact"
         variant="h2"
         textAlign={"center"}
         marginBottom={10}
         marginTop={15}
+        initial={{ opacity: 0, y: -60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.4 }}
       >
         CONTACT US
-      </Typography>
+      </MotionTypography>
 
       <Box
         component={"form"}
@@ -60,11 +64,15 @@ export const ContactForm = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <Grid container spacing={2} size={{ xs: 12, md: 6 }} maxWidth={850}>
-          <Grid
+          <MotionGrid
             size={{ xs: 12, sm: 12, md: 6 }}
             display={"flex"}
             flexDirection={"column"}
             gap={1.5}
+            initial={{ opacity: 0, x: -200 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.4 }}
           >
             <Input
               size={12}
@@ -90,7 +98,7 @@ export const ContactForm = () => {
                 },
               }}
             />
-          </Grid>
+          </MotionGrid>
           <Input
             size={6}
             control={control}
@@ -100,6 +108,10 @@ export const ContactForm = () => {
             fullWidth={true}
             multiline={true}
             rows={4}
+            initial={{ opacity: 0, x: 200 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.4 }}
           />
           <Input
             size={10}
@@ -108,40 +120,62 @@ export const ContactForm = () => {
             label="Phone"
             variant="filled"
             fullWidth={true}
+            initial={{ opacity: 0, x: -200 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.4 }}
           />
 
-          <Grid size={{ xs: 12, sm: 12, md: 2 }}>
+          <MotionGrid 
+            size={{ xs: 12, sm: 12, md: 2 }}
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.4 }}
+          >
             <button className="btnSend">
               Send
             </button>
-          </Grid>
+          </MotionGrid>
 
-          <Grid
+          <MotionGrid
             component={"div"}
             size={{ xs: 12, sm: 12, md: 4 }}
             bgcolor={"#FFF1CE"}
             borderRadius={"15px"}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.4 }}
           >
             <Button startIcon={<PhoneOutlined />}>+1 123-456-7890</Button>
-          </Grid>
+          </MotionGrid>
 
-          <Grid
+          <MotionGrid
             component={"div"}
             size={{ xs: 12, sm: 12, md: 4 }}
             bgcolor={"#FFF1CE"}
             borderRadius={"15px"}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.4 }}
           >
             <Button startIcon={<EmailOutlined />}>agustin@fonel.ca</Button>
-          </Grid>
+          </MotionGrid>
 
-          <Grid
+          <MotionGrid
             component={"div"}
             size={{ xs: 12, sm: 12, md: 4 }}
             bgcolor={"#FFF1CE"}
             borderRadius={"15px"}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.4 }}
           >
             <Button startIcon={<WhatsApp />}>WhatsApp</Button>
-          </Grid>
+          </MotionGrid>
         </Grid>
       </Box>
     </Box>

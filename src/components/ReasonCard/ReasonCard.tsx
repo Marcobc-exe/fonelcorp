@@ -1,10 +1,10 @@
 import type { FC } from "react";
 import type { ReasonService } from "../../types/iconService";
-import { Box } from "@mui/material";
+import { MotionBox } from "../MotionComponents/MuiMotion";
 
 export const ReasonCard: FC<ReasonService> = (reason) => {
   return (
-    <Box
+    <MotionBox
       key={reason.id}
       sx={{
         display: "flex",
@@ -13,6 +13,10 @@ export const ReasonCard: FC<ReasonService> = (reason) => {
         justifyContent: "center",
         textAlign: "center",
       }}
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true, amount: 0.4 }}
     >
       <p
         style={{
@@ -32,6 +36,6 @@ export const ReasonCard: FC<ReasonService> = (reason) => {
       >
         {reason.desc}
       </p>
-    </Box>
+    </MotionBox>
   );
 };

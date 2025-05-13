@@ -1,10 +1,11 @@
-import { Box, Card, CardContent, CardMedia } from "@mui/material";
+import { Box, CardContent, CardMedia } from "@mui/material";
 import type { FC } from "react";
 import type { IconService as TypeIconService } from "../../types/iconService";
+import { MotionCard } from "../MotionComponents/MuiMotion";
 
 export const IconService: FC<TypeIconService> = (service) => {
   return (
-    <Card
+    <MotionCard
       key={service.id}
       sx={{
         minWidth: "180px",
@@ -17,6 +18,10 @@ export const IconService: FC<TypeIconService> = (service) => {
         flexDirection: "column",
         alignItems: "center",
       }}
+      initial={{ opacity: 0, y: 80 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true, amount: 0.4 }}
     >
       <Box
         component={'div'}
@@ -54,6 +59,6 @@ export const IconService: FC<TypeIconService> = (service) => {
           }}
         >{service.title}</p>
       </CardContent>
-    </Card>
+    </MotionCard>
   );
 };

@@ -1,8 +1,8 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import "./hero.css";
 import { Typography } from "../Typography/Typography";
-import { MotBox } from "../MotionComponents/MoTitleBox";
-import { MotionBox } from "../MotionComponents/MuiMotion/MuiMotion";
+import { MotBox } from "../MotionComponents/CustomsMuiMotion";
+import { MotionBox } from "../MotionComponents/MuiMotion";
 
 export const HeroTitle = () => {
   const theme = useTheme();

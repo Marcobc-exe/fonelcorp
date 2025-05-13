@@ -1,7 +1,7 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { CardService } from "../CardService/CardService";
 import { listServiceCard } from "../../const/const";
-import { MotionTypography } from "../MotionComponents/MuiMotion/MuiMotion";
+import { MotionTypography } from "../MotionComponents/MuiMotion";
 
 export const OurServices = () => {
   const theme = useTheme();
@@ -19,8 +19,11 @@ export const OurServices = () => {
         variant="h2"
         textAlign={"center"}
         marginBottom={10}
-        initial={{ opacity: 0, transform: "translateY(-60px)" }}
-        animate={{ opacity: 1, transform: "translateY(0)", transition: { duration: .3 } }}
+        initial={{ opacity: 0, y: -60 }}
+        whileInView={{ opacity: 1, y: 0,
+        }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.4 }}
       >
         OUR SERVICES
       </MotionTypography>
