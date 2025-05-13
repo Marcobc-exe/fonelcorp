@@ -27,7 +27,7 @@ export const Navbar = () => {
     <>
       <AppBar>
         <Toolbar className="toolbar">
-          <button className="btnLogoNavbar" onClick={() => handleAutoScroll('home')}>
+          <button className="btnLogoNavbar" onClick={() => window.location.reload()}>
             <Box
               component={"img"}
               className="logoNavBar"
