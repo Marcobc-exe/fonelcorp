@@ -10,6 +10,11 @@ export const HeroTitle = () => {
   const isDesktopXl = useMediaQuery(theme.breakpoints.between("lg", "xl"));
   const isDesktopXxl = useMediaQuery(theme.breakpoints.up("xl"));
 
+  const handleCallNow = () => {
+    const el = document.getElementById("contact");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <Box
       id="home"
@@ -120,7 +125,9 @@ export const HeroTitle = () => {
           </Typography>
           <Typography variant="h5">Calgary &</Typography>
           <Typography variant="h5">Edmonton</Typography>
-          <button className="btn-contact-now">Call now!</button>
+          <button className="btn-contact-now" onClick={() => handleCallNow()}>
+            Call now!
+          </button>
         </Box>
       )}
       {isTablet && (
@@ -145,7 +152,12 @@ export const HeroTitle = () => {
             24/7 Reliable Roadside Assistance
           </Typography>
           <Typography variant="subtitle1">Calgary & Edmonton</Typography>
-          <button className="btn-contact-now subtitle1">Call now!</button>
+          <button
+            className="btn-contact-now subtitle1"
+            onClick={() => handleCallNow()}
+          >
+            Call now!
+          </button>
         </Box>
       )}
       {isDesktop && (
@@ -164,7 +176,12 @@ export const HeroTitle = () => {
             24/7 Reliable Roadside Assistance
           </Typography>
           <Typography variant="subtitle1">Calgary & Edmonton</Typography>
-          <button className="btn-contact-now subtitle2">Call now!</button>
+          <button
+            className="btn-contact-now subtitle2"
+            onClick={() => handleCallNow()}
+          >
+            Call now!
+          </button>
         </Box>
       )}
       {isDesktopXl && (
@@ -182,7 +199,12 @@ export const HeroTitle = () => {
             24/7 Reliable Roadside Assistance
           </Typography>
           <Typography variant="h3">Calgary & Edmonton</Typography>
-          <button className="btn-contact-now subtitle3">Call now!</button>
+          <button
+            className="btn-contact-now subtitle3"
+            onClick={() => handleCallNow()}
+          >
+            Call now!
+          </button>
         </Box>
       )}
       {isDesktopXxl && (
@@ -219,7 +241,12 @@ export const HeroTitle = () => {
           >
             Calgary & Edmonton
           </Typography>
-          <button className="btn-contact-now subtitle4">Call now!</button>
+          <button
+            className="btn-contact-now subtitle4"
+            onClick={() => handleCallNow()}
+          >
+            Call now!
+          </button>
         </Box>
       )}
     </Box>
