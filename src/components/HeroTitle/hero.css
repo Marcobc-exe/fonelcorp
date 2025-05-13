@@ -55,3 +55,42 @@
   height: 70px;
   font-size: 28px;
 }
+
+.motion-img {
+  position: absolute;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  z-index: 3;
+
+  height: 55px;
+  width: 150px;
+  top: 10%;
+  left: 55%;
+
+  animation: floatImage 2s ease-in-out infinite alternate;
+}
+
+@media (min-width: 900px) {
+  .motion-img {
+    height: 70px;
+    width: 190px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .motion-img {
+    height: 90px;
+    width: 240px;
+    top: 5%;
+    left: 60%;
+  }
+}
+
+@keyframes floatImage {
+  from {
+    transform: translate(-10px, -2px);
+  }
+  to {
+    transform: translate(10px, 2px);
+  }
+}

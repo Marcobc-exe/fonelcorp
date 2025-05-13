@@ -2,7 +2,6 @@ import { Box, useMediaQuery, useTheme } from "@mui/material";
 import "./hero.css";
 import { Typography } from "../Typography/Typography";
 import { MotBox } from "../MotionComponents/CustomsMuiMotion";
-import { MotionBox } from "../MotionComponents/MuiMotion";
 
 export const HeroTitle = () => {
   const theme = useTheme();
@@ -77,41 +76,10 @@ export const HeroTitle = () => {
           height: "100%",
         }}
       />
-      <MotionBox
-        component="img"
+      <img
+        className="motion-img"
         src={"./images/title-img-cloud.png"}
-        initial={{ transform: "translate(-10px, -2px)" }}
-        animate={{ transform: "translate(10px, 2px)" }}
-        transition={{
-          type: "tween",
-          repeat: Infinity,
-          duration: 2,
-          repeatType: "reverse",
-        }}
-        sx={{
-          position: "absolute",
-          aspectRatio: 16 / 9,
-          objectFit: "cover",
-          zIndex: 3,
-          height: {
-            xs: "55px",
-            md: "70px",
-            xl: "90px",
-          },
-          width: {
-            xs: "150px",
-            md: "190px",
-            xl: "240px",
-          },
-          top: {
-            xs: "10%",
-            xl: "5%",
-          },
-          left: {
-            xs: "55%",
-            xl: "60%",
-          },
-        }}
+        alt="Cloud"
       />
       {isMobile && (
         <MotBox

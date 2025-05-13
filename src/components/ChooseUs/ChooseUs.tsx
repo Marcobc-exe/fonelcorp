@@ -1,5 +1,4 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
-import { Typography } from "../Typography/Typography";
 import { IconService } from "../IconService/IconService";
 import { listIconService, listReason } from "../../const/const";
 import { ReasonCard } from "../ReasonCard/ReasonCard";
