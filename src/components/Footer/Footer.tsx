@@ -3,16 +3,20 @@ import { Typography } from "../Typography/Typography";
 import { EmailOutlined, PhoneOutlined, WhatsApp } from "@mui/icons-material";
 import "./footer.css";
 import { about } from "../../const/const";
+import type { FC } from "react";
 
-export const Footer = () => {
+type Props = {
+  handleModal: (value: boolean) => void;
+}
+
+export const Footer: FC<Props> = ({ handleModal }) => {
+
   const handleAutoScroll = (target: string) => {
-    if (target === 'policy') {
-      console.log('handle policy view')
-    } else {
+    if (target !== 'policy') {
       const el = document.getElementById(target);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      handleModal(true);
     }
   };
 
