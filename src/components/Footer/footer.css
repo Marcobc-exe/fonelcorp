@@ -1,9 +1,10 @@
-#btnContact {
+#btnContact, #btnContact {
   justify-content: start;
   color: #294971;
+  text-transform: none;
 }
 
-#btnContact:hover {
+#btnContact:hover, #btnContact:hover {
   background-color: transparent;
   opacity: .6;
 }

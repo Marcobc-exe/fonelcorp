@@ -1,10 +1,13 @@
 import { Box, Grid } from "@mui/material";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { Input } from "../Input/Input";
-import { EmailOutlined, PhoneOutlined, WhatsApp } from "@mui/icons-material";
+import { EmailOutlined, PhoneOutlined } from "@mui/icons-material";
 import { Button } from "../Button/Button";
-import './contactForm.css'
+import "./contactForm.css";
 import { MotionGrid, MotionTypography } from "../MotionComponents/MuiMotion";
+import { email, phone, whatsAppLink } from "../../const/const";
+import { handleCopyEmail } from "../../func/functs";
+import { useState } from "react";
 
 type Inputs = {
   name: string;
@@ -27,10 +30,22 @@ export const ContactForm = () => {
       comment: "",
     },
   });
+  const [copied, setCopied] = useState<null | boolean>(null);
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     reset(); // if successful email sent
     console.log(data);
+  };
+
+  const handleNotifyEmail = async () => {
+    const isCopy = await handleCopyEmail();
+
+    if (isCopy) setCopied(true);
+    if (!isCopy) setCopied(false);
+
+    setTimeout(() => {
+      setCopied(null);
+    }, 2000);
   };
 
   return (
@@ -126,16 +141,14 @@ export const ContactForm = () => {
             viewport={{ once: true, amount: 0.4 }}
           />
 
-          <MotionGrid 
+          <MotionGrid
             size={{ xs: 12, sm: 12, md: 2 }}
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true, amount: 0.4 }}
           >
-            <button className="btnSend">
-              Send
-            </button>
+            <button className="btnSend">Send</button>
           </MotionGrid>
 
           <MotionGrid
@@ -148,7 +161,9 @@ export const ContactForm = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true, amount: 0.4 }}
           >
-            <Button startIcon={<PhoneOutlined />}>+1 123-456-7890</Button>
+            <Button startIcon={<PhoneOutlined />} href="tel:+14034661621">
+              {phone}
+            </Button>
           </MotionGrid>
 
           <MotionGrid
@@ -161,11 +176,18 @@ export const ContactForm = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true, amount: 0.4 }}
           >
-            <Button startIcon={<EmailOutlined />}>agustin@fonel.ca</Button>
+            <Button
+              startIcon={<EmailOutlined />}
+              onClick={() => handleNotifyEmail()}
+            >
+              {copied === true && "Copied!"}
+              {copied === false && "Error!"}
+              {copied === null && email}
+            </Button>
           </MotionGrid>
 
           <MotionGrid
-            component={"div"}
+            // component={"div"}
             size={{ xs: 12, sm: 12, md: 4 }}
             bgcolor={"#FFF1CE"}
             borderRadius={"15px"}
@@ -174,7 +196,20 @@ export const ContactForm = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true, amount: 0.4 }}
           >
-            <Button startIcon={<WhatsApp />}>WhatsApp</Button>
+            <Button
+              startIcon={
+                <Box
+                  component="img"
+                  src="./images/whatsapp-line.svg"
+                  alt="WhatsApp"
+                  sx={{ color: "#25D366", width: 20, height: 20 }}
+                />
+              }
+              href={whatsAppLink}
+              target="_blank"
+            >
+              WhatsApp
+            </Button>
           </MotionGrid>
         </Grid>
       </Box>

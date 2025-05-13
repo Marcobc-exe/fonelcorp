@@ -2,6 +2,7 @@
   justify-content: start;
   color: #294971;
   padding-left: 20px;
+  text-transform: none;
 }
 
 #btnContactNv:hover {

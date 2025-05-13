@@ -11,8 +11,8 @@ type MotBoxProps = BoxProps &
 export const MotBox: FC<MotBoxProps> = ({ children, ...props }) => {
   return (
     <MotionBox
-      initial={{ opacity: 0, x: 0 }}
-      whileInView={{ opacity: 1, x: 100 }}
+      initial={{ opacity: 0, x: -100 }}
+      whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
       viewport={{ once: true, amount: 0.3 }}
       {...props}

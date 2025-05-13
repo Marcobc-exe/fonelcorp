@@ -94,3 +94,7 @@ export const content: Content[] = [
   { label: "Areas Covered", target: "areas" },
   { label: "Contact", target: "contact" },
 ];
+
+export const whatsAppLink = "https://wa.me/14034661621";
+export const email = "roadside@fonel.ca";
+export const phone = "403-466-1621";

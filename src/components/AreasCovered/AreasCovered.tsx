@@ -39,7 +39,7 @@ export const AreasCovered = () => {
           sx={{
             width: window.innerWidth < 380 ? "300px" : "450px",
           }}
-          initial={{ x: -500 }}
+          initial={{ x: '-40%' }}
           whileInView={{ x: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -50,7 +50,7 @@ export const AreasCovered = () => {
           sx={{
             width: window.innerWidth < 380 ? "300px" : "450px",
           }}
-          initial={{ x: 500 }}
+          initial={{ x: '40%' }}
           whileInView={{ x: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true, amount: 0.3 }}
