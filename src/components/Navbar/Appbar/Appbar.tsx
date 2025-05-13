@@ -7,4 +7,5 @@ export const AppBar = styled(
 )(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
   backgroundColor: "white",
+  boxShadow: 'none'
 }));

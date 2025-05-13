@@ -1,0 +1,24 @@
+#btnContactPP {
+  justify-content: start;
+  color: #294971;
+  padding-left: 20px;
+}
+
+#btnContactPP:hover {
+  background-color: transparent;
+  opacity: .6;
+}
+
+.btnCloseModal {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #294971;
+}
+
+.btnCloseModal:hover {
+  opacity: .6;
+}
