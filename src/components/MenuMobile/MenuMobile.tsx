@@ -1,4 +1,4 @@
-import { Box, Button, Drawer, List, ListItem } from "@mui/material";
+import { Box, Button, Drawer, List } from "@mui/material";
 import { content, email, phone, whatsAppLink } from "../../const/const";
 import { Typography } from "../Typography/Typography";
 import { EmailOutlined, PhoneOutlined } from "@mui/icons-material";
@@ -46,7 +46,7 @@ export const MenuMobile: FC<Props> = ({
       >
         <List>
           {content.map((c) => (
-            <ListItem button key={c.target}>
+            <li key={c.target} style={{ paddingLeft: '20px'}}>
               <Typography
                 variant="body1"
                 sx={{ fontWeight: "bold" }}
@@ -54,7 +54,7 @@ export const MenuMobile: FC<Props> = ({
               >
                 {c.label}
               </Typography>
-            </ListItem>
+            </li>
           ))}
         </List>
         <hr

@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { MotionBox, MotionTypography } from "../MotionComponents/MuiMotion";
+import { MotionImg, MotionTypography } from "../MotionComponents/MuiMotion";
 
 export const AreasCovered = () => {
   return (
@@ -33,21 +33,17 @@ export const AreasCovered = () => {
           marginBottom: 10,
         }}
       >
-        <MotionBox
-          component={"img"}
+        <MotionImg
           src={"./images/calgary-map.jpg"}
-          sx={{
-            width: window.innerWidth < 380 ? "300px" : "450px",
-          }}
+          style={{ width: window.innerWidth < 380 ? "300px" : "450px" }}
           initial={{ x: '-40%' }}
           whileInView={{ x: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true, amount: 0.3 }}
         />
-        <MotionBox
-          component={"img"}
+        <MotionImg
           src={"./images/edmonton-map.jpg"}
-          sx={{
+          style={{
             width: window.innerWidth < 380 ? "300px" : "450px",
           }}
           initial={{ x: '40%' }}

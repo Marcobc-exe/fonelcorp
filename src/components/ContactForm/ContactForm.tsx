@@ -21,7 +21,7 @@ export const ContactForm = () => {
     control,
     handleSubmit,
     reset,
-    formState: { errors },
+    // formState: { errors },
   } = useForm<Inputs>({
     defaultValues: {
       name: "",
@@ -152,7 +152,7 @@ export const ContactForm = () => {
           </MotionGrid>
 
           <MotionGrid
-            component={"div"}
+            // component={"div"}
             size={{ xs: 12, sm: 12, md: 4 }}
             bgcolor={"#FFF1CE"}
             borderRadius={"15px"}
@@ -167,7 +167,7 @@ export const ContactForm = () => {
           </MotionGrid>
 
           <MotionGrid
-            component={"div"}
+            // as ={"div"}
             size={{ xs: 12, sm: 12, md: 4 }}
             bgcolor={"#FFF1CE"}
             borderRadius={"15px"}
@@ -196,20 +196,17 @@ export const ContactForm = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true, amount: 0.4 }}
           >
-            <Button
-              startIcon={
+            <button className="btnContactForm">
+              <a href={whatsAppLink} target="_blank">
                 <Box
                   component="img"
                   src="./images/whatsapp-line.svg"
                   alt="WhatsApp"
                   sx={{ color: "#25D366", width: 20, height: 20 }}
                 />
-              }
-              href={whatsAppLink}
-              target="_blank"
-            >
-              WhatsApp
-            </Button>
+                WhatsApp
+              </a>
+            </button>
           </MotionGrid>
         </Grid>
       </Box>

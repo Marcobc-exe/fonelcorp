@@ -15,3 +15,45 @@
   background-color: #3d6ba4;
   transition: .2s ease-in-out all;
 }
+
+.btnContactForm {
+  font-weight: bold;
+  line-height: 1.5px;
+  font-size: 16px;
+  width: 100%;
+  padding-inline: 10px;
+  padding-block: 5px;
+  border: none;
+  border-radius: 15px;
+  color: #294971;
+  background-color: #fff1ce;
+  height: 56px;
+}
+
+.btnContactForm > a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.btnContactForm > a > img {
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.btnContactForm:hover {
+  background-color: #fff1ce;
+  box-shadow: 5px 5px 0px 0 #294971;
+}
+
+.btnContactForm:active {
+  box-shadow: none;
+  background-color: #fff1ce;
+}
+
+.btnContactForm:focus {
+  box-shadow: none;
+  background-color: #fff1ce;
+}
