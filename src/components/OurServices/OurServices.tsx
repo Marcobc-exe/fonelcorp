@@ -24,12 +24,12 @@ export const OurServices = () => {
         }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true, amount: 0.4 }}
+        sx={{ fontSize: { xs: '2rem' }, fontWeight: { xs: 'bold' } }}
       >
         OUR SERVICES
       </MotionTypography>
 
       <Box
-        component={"div"}
         sx={{
           marginInline: isMobile ? "60px" : "120px",
           display: "flex",
