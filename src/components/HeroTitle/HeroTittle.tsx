@@ -35,8 +35,8 @@ export const HeroTitle = () => {
         sx={{
           aspectRatio: 16 / 9,
           objectFit: "cover",
-          position: 'relative',
-          width: '100%',
+          position: "relative",
+          width: "100%",
           height: "100%",
         }}
       />
@@ -62,8 +62,26 @@ export const HeroTitle = () => {
             marginTop: "12px",
           }}
         >
-          <Typography variant="h6">
-            24/7 Reliable Roadside Assistance
+          <Typography
+            variant="h6"
+            sx={{
+              fontSize: "2rem",
+              fontWeight: "bold",
+              lineHeight: 1.2,
+              marginBottom: "4px",
+            }}
+          >
+            Roadside Assistance
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              fontSize: "1rem",
+              fontWeight: "bold",
+              marginBottom: "14px",
+            }}
+          >
+            24/7 Reliable
           </Typography>
           <Typography variant="h5">Calgary &</Typography>
           <Typography variant="h5">Edmonton</Typography>
