@@ -31,48 +31,12 @@ export const HeroTitle = () => {
     >
       <Box
         component="img"
-        src={"./images/title-image-car.png"}
+        src={"./images/Hero-Image.svg"}
         sx={{
-          position: "absolute",
-          top: 0,
           aspectRatio: 16 / 9,
           objectFit: "cover",
-          zIndex: 1,
-          right: {
-            xs: -18,
-            sm: -25,
-            md: -30,
-            lg: -40,
-            xl: -45,
-          },
-          width: {
-            xs: "150%",
-            sm: "120%",
-            md: "100%",
-            lg: "95%",
-            xl: "80%",
-          },
-          height: "100%",
-        }}
-      />
-      <Box
-        component="img"
-        src={"./images/title-img-bg.png"}
-        sx={{
-          position: "absolute",
-          aspectRatio: 16 / 9,
-          objectFit: "cover",
-          zIndex: 2,
-          left: {
-            xs: -285,
-            lg: -450,
-            xl: -350,
-          },
-          width: {
-            xs: window.innerWidth <= 425 ? "180%" : "120%",
-            md: "110%",
-            xl: "100%",
-          },
+          position: 'relative',
+          width: '100%',
           height: "100%",
         }}
       />
