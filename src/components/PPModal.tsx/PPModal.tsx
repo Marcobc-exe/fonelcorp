@@ -3,6 +3,7 @@ import type { FC } from "react";
 import { Typography } from "../Typography/Typography";
 import { Close, EmailOutlined, PhoneOutlined } from "@mui/icons-material";
 import "./ppmodal.css";
+import { email, phone } from "../../const/const";
 
 type Props = {
   open: boolean;
@@ -26,7 +27,15 @@ export const PPModal: FC<Props> = ({ open, handleModal }) => {
   return (
     <Modal open={open} onClose={() => handleModal(false)}>
       <Box component={"div"} sx={style}>
-        <Typography variant="h3" textAlign={"center"} marginBottom={2}>
+        <Typography
+          variant="h3"
+          textAlign={"center"}
+          marginBottom={2}
+          sx={{
+            fontSize: { xs: "1.5rem", sm: "2.5rem" },
+            marginTop: { xs: "24px", sm: "0px" },
+          }}
+        >
           PRIVACY POLICY
         </Typography>
         <button className="btnCloseModal" onClick={() => handleModal(false)}>
@@ -34,7 +43,10 @@ export const PPModal: FC<Props> = ({ open, handleModal }) => {
         </button>
         <Box
           component={"div"}
-          height={320}
+          height={{
+            xs: 300,
+            sm: 320,
+          }}
           width={"100%"}
           sx={{ overflow: "auto" }}
         >
@@ -118,18 +130,20 @@ export const PPModal: FC<Props> = ({ open, handleModal }) => {
               display={"flex"}
               marginLeft={2}
               alignItems={"center"}
+              gap={2}
             >
               <PhoneOutlined />
-              +1 123-456-7890
+              {phone}
             </Typography>
             <Typography
               variant="body1"
               display={"flex"}
               marginLeft={2}
               alignItems={"center"}
+              gap={2}
             >
               <EmailOutlined />
-              agustin@fonel.ca
+              {email}
             </Typography>
           </Box>
 
