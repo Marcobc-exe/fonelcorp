@@ -7,9 +7,10 @@ import "./contactForm.css";
 import { MotionGrid, MotionTypography } from "../MotionComponents/MuiMotion";
 import { email, phone, whatsAppLink } from "../../const/const";
 import { handleCopyEmail } from "../../func/functs";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
-type Inputs = {
+type Inputs = string & {
   name: string;
   email: string;
   phone: string;
@@ -17,6 +18,7 @@ type Inputs = {
 };
 
 export const ContactForm = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const {
     control,
     handleSubmit,
@@ -31,10 +33,31 @@ export const ContactForm = () => {
     },
   });
   const [copied, setCopied] = useState<null | boolean>(null);
+  const [sent, setSent] = useState<null | boolean>(null);
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    reset(); // if successful email sent
-    console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = () => {
+    if (!formRef.current) return;
+    emailjs
+      .sendForm(
+        "service_h62zclh",
+        "template_803tgmp",
+        formRef.current,
+        "qZ7op4MeUeWbLdT07"
+      )
+      .then((res) => {
+        console.log(res);
+        setSent(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        setSent(false);
+      })
+      .finally(() => {
+        reset();
+        setInterval(() => {
+          setSent(null);
+        }, 2000);
+      });
   };
 
   const handleNotifyEmail = async () => {
@@ -71,11 +94,9 @@ export const ContactForm = () => {
       </MotionTypography>
 
       <Box
+        ref={formRef}
         component={"form"}
-        sx={{
-          // bgcolor: 'red',
-          justifyItems: "center",
-        }}
+        sx={{ justifyItems: "center" }}
         onSubmit={handleSubmit(onSubmit)}
       >
         <Grid container spacing={2} size={{ xs: 12, md: 6 }} maxWidth={850}>
@@ -148,11 +169,14 @@ export const ContactForm = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true, amount: 0.4 }}
           >
-            <button className="btnSend">Send</button>
+            <button className="btnSend">
+              {sent === null && 'Send'}
+              {sent === true && 'Sent!'}
+              {sent === false && 'Error!'}
+            </button>
           </MotionGrid>
 
           <MotionGrid
-            // component={"div"}
             size={{ xs: 12, sm: 12, md: 4 }}
             bgcolor={"#FFF1CE"}
             borderRadius={"15px"}
@@ -167,7 +191,6 @@ export const ContactForm = () => {
           </MotionGrid>
 
           <MotionGrid
-            // as ={"div"}
             size={{ xs: 12, sm: 12, md: 4 }}
             bgcolor={"#FFF1CE"}
             borderRadius={"15px"}
@@ -187,7 +210,6 @@ export const ContactForm = () => {
           </MotionGrid>
 
           <MotionGrid
-            // component={"div"}
             size={{ xs: 12, sm: 12, md: 4 }}
             bgcolor={"#FFF1CE"}
             borderRadius={"15px"}

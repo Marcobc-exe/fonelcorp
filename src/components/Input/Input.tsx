@@ -74,6 +74,7 @@ export const Input = <T extends FieldValues>({
           <TextField
             required
             ref={ref}
+            name={name}
             rows={rows}
             value={value}
             label={label}
