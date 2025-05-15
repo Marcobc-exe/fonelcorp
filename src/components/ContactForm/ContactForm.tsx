@@ -9,6 +9,7 @@ import { call, email, phone, whatsAppLink } from "../../const/const";
 import { handleCopyEmail } from "../../func/functs";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { getEnvVariable } from "../../helper/helpers";
 
 type Inputs = string & {
   name: string;
@@ -23,7 +24,6 @@ export const ContactForm = () => {
     control,
     handleSubmit,
     reset,
-    // formState: { errors },
   } = useForm<Inputs>({
     defaultValues: {
       name: "",
@@ -35,29 +35,28 @@ export const ContactForm = () => {
   const [copied, setCopied] = useState<null | boolean>(null);
   const [sent, setSent] = useState<null | boolean>(null);
 
-  const onSubmit: SubmitHandler<Inputs> = () => {
+  const onSubmit: SubmitHandler<Inputs> = async () => {
     if (!formRef.current) return;
-    emailjs
-      .sendForm(
-        "service_h62zclh",
-        "template_803tgmp",
+
+    try {
+      const response = await emailjs.sendForm(
+        getEnvVariable("EMAIL_SERVICE_ID"),
+        getEnvVariable("EMAIL_TEMPLATE_ID"),
         formRef.current,
-        "qZ7op4MeUeWbLdT07"
-      )
-      .then((res) => {
-        console.log(res);
-        setSent(true);
-      })
-      .catch((err) => {
-        console.log(err);
-        setSent(false);
-      })
-      .finally(() => {
-        reset();
-        setInterval(() => {
-          setSent(null);
-        }, 2000);
-      });
+        getEnvVariable("EMAIL_PUBLIC_KEY")
+      );
+
+      console.log(response);
+      setSent(true);
+    } catch (error) {
+      console.log(error);
+      setSent(false);
+    } finally {
+      reset();
+      setTimeout(() => {
+        setSent(null);
+      }, 2000);
+    }
   };
 
   const handleNotifyEmail = async () => {
@@ -170,9 +169,9 @@ export const ContactForm = () => {
             viewport={{ once: true, amount: 0.4 }}
           >
             <button className="btnSend">
-              {sent === null && 'Send'}
-              {sent === true && 'Sent!'}
-              {sent === false && 'Error!'}
+              {sent === null && "Send"}
+              {sent === true && "Sent!"}
+              {sent === false && "Error!"}
             </button>
           </MotionGrid>
 
