@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import type { FC, ReactNode } from "react";
 import { Navbar } from "../Navbar/Navbar";
+import { CallNowBtn } from "../Button/CallNowBtn";
 
 type Props = {
   children: ReactNode;
@@ -8,8 +9,9 @@ type Props = {
 
 export const Layout: FC<Props> = ({ children }) => {
   return (
-    <Box style={{ display: "flex" }}>
+    <Box style={{ display: "flex", position: "relative", minHeight: "100vh" }}>
       <Navbar />
+      <CallNowBtn />
       <Box
         component={"main"}
         sx={{

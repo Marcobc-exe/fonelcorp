@@ -5,7 +5,7 @@ import { EmailOutlined, PhoneOutlined } from "@mui/icons-material";
 import { Button } from "../Button/Button";
 import "./contactForm.css";
 import { MotionGrid, MotionTypography } from "../MotionComponents/MuiMotion";
-import { email, phone, whatsAppLink } from "../../const/const";
+import { call, email, phone, whatsAppLink } from "../../const/const";
 import { handleCopyEmail } from "../../func/functs";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
@@ -185,7 +185,7 @@ export const ContactForm = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true, amount: 0.4 }}
           >
-            <Button startIcon={<PhoneOutlined />} href="tel:+14034661621">
+            <Button startIcon={<PhoneOutlined />} href={call}>
               {phone}
             </Button>
           </MotionGrid>

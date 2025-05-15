@@ -1,5 +1,5 @@
 import { Box, Button, Drawer, List } from "@mui/material";
-import { content, email, phone, whatsAppLink } from "../../const/const";
+import { call, content, email, phone, whatsAppLink } from "../../const/const";
 import { Typography } from "../Typography/Typography";
 import { EmailOutlined, PhoneOutlined } from "@mui/icons-material";
 import { useState, type FC } from "react";
@@ -68,7 +68,7 @@ export const MenuMobile: FC<Props> = ({
         <Button
           id="btnContactNv"
           startIcon={<PhoneOutlined />}
-          href="tel:+14034661621"
+          href={call}
         >
           {phone}
         </Button>

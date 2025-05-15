@@ -7,3 +7,4 @@ export const MotionTypography = motion.create(Typography);
 export const MotionCard = motion.create(Card);
 export const MotionGrid = motion.create(Grid);
 export const MotionImg = motion.create('img');
+export const MotionButton = motion.create('button');

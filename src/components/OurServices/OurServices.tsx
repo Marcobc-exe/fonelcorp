@@ -20,8 +20,7 @@ export const OurServices = () => {
         textAlign={"center"}
         marginBottom={10}
         initial={{ opacity: 0, y: -60 }}
-        whileInView={{ opacity: 1, y: 0,
-        }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true, amount: 0.4 }}
         sx={{ fontSize: { xs: '2rem' }, fontWeight: { xs: 'bold' } }}
