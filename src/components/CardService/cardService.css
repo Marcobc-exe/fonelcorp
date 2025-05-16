@@ -1,0 +1,37 @@
+.btnBookNow {
+  background-color: #294971;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  height: 40px;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 5px 14px;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+.btnBookNow:hover {
+  box-shadow: 5px 5px 0px 0 #f5cd67;
+  background-color: #3d6ba4;
+  transition: .2s ease-in-out all;
+}
+
+.title-service {
+  color: #ff4d00;
+  color: #F89A2D;
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+  height: 75px;
+}
+
+.p-desc-service {
+  color: #1f355e;
+  text-align: center;
+  font-weight: bold;
+  padding: 0;
+  height: 170px;
+}

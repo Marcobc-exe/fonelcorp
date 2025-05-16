@@ -1,6 +1,6 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
-import { IconService } from "../IconService/IconService";
-import { listIconService, listReason } from "../../const/const";
+// import { IconService } from "../IconService/IconService";
+import { listReason } from "../../const/const";
 import { ReasonCard } from "../ReasonCard/ReasonCard";
 import { MotionTypography } from "../MotionComponents/MuiMotion";
 
@@ -14,7 +14,10 @@ export const ChooseUs = () => {
       component={"div"}
       bgcolor={"#FFF8E7"}
       paddingInline={"30px"}
-      paddingBlock={"50px"}
+      paddingBlock={{
+        xs: '30px',
+        md: "50px"
+      }}
     >
       <div
         style={{
@@ -33,7 +36,10 @@ export const ChooseUs = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true, amount: 0.4 }}
-          sx={{ fontSize: { xs: "1.4rem" }, fontWeight: { xs: "bold" } }}
+          sx={{
+            fontSize: { xs: "1.4rem", lg: "2rem" },
+            fontWeight: { xs: "bold" },
+          }}
         >
           WHY CHOOSE OUR ROADSIDE ASSTANCE?
         </MotionTypography>
@@ -46,7 +52,7 @@ export const ChooseUs = () => {
           flexDirection: "row",
           flexWrap: "wrap",
           justifyContent: "center",
-          gap: isTablet ? 4 : isMobile ? 0 : 14,
+          gap: isTablet ? 4 : isMobile ? 0 : 8,
           marginBottom: "40px",
         }}
       >
@@ -56,26 +62,8 @@ export const ChooseUs = () => {
             id={reason.id}
             title={reason.title}
             desc={reason.desc}
-          />
-        ))}
-      </Box>
-
-      <Box
-        component={"div"}
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          gap: 3,
-          flexWrap: "wrap",
-        }}
-      >
-        {listIconService.map((service) => (
-          <IconService
-            key={service.id}
-            id={service.id}
-            image={service.image}
-            title={service.title}
+            src={reason.src}
+            alt={reason.alt}
           />
         ))}
       </Box>

@@ -75,7 +75,10 @@ export const ContactForm = () => {
       component={"div"}
       bgcolor={"#FFF8E7"}
       paddingInline={"30px"}
-      paddingBlock={"50px"}
+      paddingBlock={{
+        xs: '30px',
+        md: "50px"
+      }}
       position={"relative"}
     >
       <MotionTypography
@@ -83,7 +86,8 @@ export const ContactForm = () => {
         variant="h2"
         textAlign={"center"}
         marginBottom={10}
-        marginTop={15}
+        marginTop={5}
+        sx={{ fontSize: { xs: "1.8rem", lg: '2rem' }, fontWeight: { xs: "bold" } }}
         initial={{ opacity: 0, y: -60 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}

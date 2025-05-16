@@ -23,7 +23,10 @@ export const OurServices = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true, amount: 0.4 }}
-        sx={{ fontSize: { xs: '2rem' }, fontWeight: { xs: 'bold' } }}
+        sx={{
+          fontSize: { xs: "2rem", lg: "3rem" },
+          fontWeight: { xs: "bold" },
+        }}
       >
         OUR SERVICES
       </MotionTypography>
@@ -35,8 +38,7 @@ export const OurServices = () => {
           flexWrap: "wrap",
           justifyContent: "center",
           alignItems: "flex-start",
-          gap: isMobile ? "0px" : "10px",
-          rowGap: isMobile ? "0px" : "60px",
+          gap: isMobile ? "20px" : "15px",
         }}
       >
         {listServiceCard.map((service) => (
@@ -46,6 +48,7 @@ export const OurServices = () => {
             image={service.image}
             title={service.title}
             desc={service.desc}
+            alt={service.alt}
           />
         ))}
       </Box>

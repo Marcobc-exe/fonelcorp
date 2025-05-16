@@ -1,4 +1,11 @@
-import { CardContent, CardMedia, useMediaQuery, useTheme } from "@mui/material";
+import "./cardService.css";
+import {
+  Box,
+  CardContent,
+  CardMedia,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { useRef, type FC } from "react";
 import type { ServiceCard } from "../../types/service";
 import { MotionCard } from "../MotionComponents/MuiMotion";
@@ -15,9 +22,12 @@ export const CardService: FC<ServiceCard> = (service) => {
       ref={ref}
       key={service.id}
       sx={{
-        minWidth: isMobile ? "250px" : "400px",
-        maxWidth: isMobile ? "250px" : "400px",
-        height: isMobile ? "350px" : "570px",
+        minWidth: isMobile ? "250px" : "300px",
+        maxWidth: isMobile ? "250px" : "300px",
+        height: {
+          md: "650px",
+          lg: "700px",
+        },
         bgcolor: "transparent",
         display: "flex",
         flexDirection: "column",
@@ -30,40 +40,33 @@ export const CardService: FC<ServiceCard> = (service) => {
     >
       <CardMedia
         component={"img"}
-        alt="img-png"
+        alt={service.alt}
         image={service.image}
         sx={{
           aspectRatio: 16 / 9,
           objectFit: "cover",
           borderRadius: 110,
-          maxWidth: isMobile ? "150px" : "360px",
-          minWidth: isMobile ? "150px" : "360px",
-          minHeight: isMobile ? "150px" : "360px",
+          maxWidth: isMobile ? "150px" : "280px",
+          minWidth: isMobile ? "150px" : "280px",
+          minHeight: isMobile ? "150px" : "280px",
         }}
       />
       <CardContent>
-        <p
-          style={{
-            color: "#FF4D00",
-            textAlign: "center",
-            fontSize: isMobile ? 26 : 34,
-            fontWeight: "bold",
-            margin: 0,
-          }}
-        >
-          {service.title}
-        </p>
-        <p
-          style={{
-            color: "#1F355E",
-            textAlign: "center",
-            fontWeight: "bold",
-            fontSize: isMobile ? 16 : 26,
-            paddingInline: "45px",
-          }}
-        >
-          {service.desc}
-        </p>
+        <Box>
+          <h3
+            className="title-service"
+            style={{ fontSize: isMobile ? 26 : 30 }}
+          >
+            {service.title}
+          </h3>
+          <p
+            className="p-desc-service"
+            style={{ fontSize: isMobile ? 16 : 20 }}
+          >
+            {service.desc}
+          </p>
+          <button className="btnBookNow">Book Now!</button>
+        </Box>
       </CardContent>
     </MotionCard>
   );

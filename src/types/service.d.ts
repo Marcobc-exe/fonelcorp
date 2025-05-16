@@ -3,6 +3,7 @@ export type ServiceCard = {
   image: string;
   title: string;
   desc: string;
+  alt: string;
 };
 
 export type Content = {
