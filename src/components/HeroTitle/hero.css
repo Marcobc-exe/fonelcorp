@@ -1,5 +1,4 @@
 .box-hero {
-  /* margin: 0; */
   width: 100%;
   height: 700px;
   position: relative;
@@ -7,10 +6,9 @@
 }
 
 .box-hero-title {
-  /* background: rgba(0, 128, 0, 0.325); */
   position: absolute;
   z-index: 4;
-  top: 24px;
+  top: 0;
 }
 
 .btn-contact-now {
@@ -19,41 +17,16 @@
   background: #F89A2D;
   color: #1F355E;
   font-weight: bolder;
-  font-size: 12px;
+  font-size: 18px;
   cursor: pointer;
   border-radius: 18px;
-  width: 86px;
-  height: 30px;
+  width: 150px;
+  height: 50px;
   padding: 10px 5px;
   margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.subtitle1 {
-  width: 130px;
-  height: 40px;
-  font-size: 16px;
-}
-
-.subtitle2 {
-  width: 170px;
-  height: 50px;
-  font-size: 20px;
-}
-
-.subtitle3 {
-  width: 180px;
-  height: 60px;
-  font-size: 24px;
-}
-
-.subtitle4 {
-  margin-top: 50px;
-  width: 210px;
-  height: 70px;
-  font-size: 28px;
 }
 
 .motion-img {
@@ -65,9 +38,84 @@
   height: 55px;
   width: 150px;
   top: 10%;
-  left: 55%;
+  left: 35%;
 
   animation: floatImage 2s ease-in-out infinite alternate;
+}
+
+.title-roadside-assistance {
+  color: #1F355E;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.subtitle-calgary-edmonton {
+  color: #1F355E;
+  font-size: 1.8  rem;
+  font-weight: 400;
+  width: 900px;
+}
+
+@media (max-width: 900px) {
+  .title-roadside-assistance {
+    font-size: 2rem;
+    width: 400px;
+  }
+
+  .subtitle-calgary-edmonton {
+    font-size: 1.2rem;
+  }
+
+  .btn-contact-now {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .btn-contact-now {
+    width: 120px;
+  }
+}
+
+@media (max-width: 500px) {
+  .title-roadside-assistance {
+    width: 200px;
+  }
+
+  .subtitle-calgary-edmonton {
+    width: 100px;
+  }
+
+  .btn-contact-now {
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 425px) {
+  .btn-contact-now {
+    width: 100px;
+    height: 40px;
+    margin-top: 30px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 375px) {
+  .title-roadside-assistance {
+    font-size: 1.6rem;
+  }
+
+  .subtitle-calgary-edmonton {
+    font-size: 1rem;
+  }
+
+  .btn-contact-now {
+    width: 100px;
+    height: 40px;
+    margin-top: 35px;
+    font-size: 14px;
+  }
 }
 
 @media (min-width: 900px) {
@@ -82,7 +130,7 @@
     height: 90px;
     width: 240px;
     top: 5%;
-    left: 60%;
+    left: 40%;
   }
 }
 
