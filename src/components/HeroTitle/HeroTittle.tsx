@@ -1,8 +1,10 @@
 import "./hero.css";
 import { Box } from "@mui/material";
 import { MotBox } from "../MotionComponents/CustomsMuiMotion";
+import { useSeoHelmet } from "../../hooks/useSeoHelmet";
 
 export const HeroTitle = () => {
+  const helmet = useSeoHelmet('default');
   const handleCallNow = () => {
     const el = document.getElementById("contact");
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -34,6 +36,7 @@ export const HeroTitle = () => {
         src={"./images/title-img-cloud.png"}
         alt="Cloud"
       />
+      {helmet}
       <MotBox
         id="isDesktopXxl"
         className="box-hero-title"

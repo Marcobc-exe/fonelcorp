@@ -1,0 +1,17 @@
+.box-desc-roadside-assistance {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -30px;
+}
+
+.p-desc-roadside-assistance {
+  border-radius: 20px;
+  color: #1F355E;
+  padding: 40px;
+  width: 35em;
+  background-color: #fff1ce;
+  text-align: center;
+  font-size: 1.1em;
+  position: relative;
+  top: -100px
+}
