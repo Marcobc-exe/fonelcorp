@@ -1,12 +1,12 @@
 import "./buttons.css";
-import { useEffect, useRef, useState } from "react";
-import { PhoneOutlined } from "@mui/icons-material";
-import { animate, type AnimationPlaybackControls } from "motion";
+import { useRef, useState } from "react";
+import { WhatsApp } from "@mui/icons-material";
+import { type AnimationPlaybackControls } from "motion";
 import { useMotionValue, useMotionValueEvent, useScroll } from "motion/react";
-import { MotionButton } from "../MotionComponents/MuiMotion";
+import { MotionButton, MotionDiv } from "../MotionComponents/MuiMotion";
 import { call } from "../../const/const";
 
-export const CallNowBtn = () => {
+export const WhatsAppBtn = () => {
   const controlRef = useRef<AnimationPlaybackControls | null>(null);
   const rotate = useMotionValue(0);
   const { scrollY } = useScroll();
@@ -17,22 +17,10 @@ export const CallNowBtn = () => {
     if (display && latest <= 88) setDisplay(false);
   });
 
-  useEffect(() => {
-    const controls = animate(rotate, [15, -15, 15, -15, 15, -15], {
-      duration: 0.4,
-      repeat: Infinity,
-      velocity: 100,
-      type: "keyframes",
-    });
-
-    controlRef.current = controls;
-    controlRef.current.pause();
-  }, [rotate]);
-
   return (
     <a href={call}>
       <MotionButton
-        className="btnCallnow"
+        className="btnWhatsapp"
         style={{ rotate }}
         initial={{ x: -100 }}
         animate={{
@@ -45,7 +33,9 @@ export const CallNowBtn = () => {
           controlRef.current?.cancel();
         }}
       >
-        <PhoneOutlined />
+        <MotionDiv whileHover={{ scale: 1.3 }}>
+          <WhatsApp />
+        </MotionDiv>
       </MotionButton>
     </a>
   );
