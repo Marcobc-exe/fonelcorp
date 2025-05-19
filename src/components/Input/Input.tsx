@@ -41,6 +41,9 @@ export const Input = <T extends FieldValues>({
       "&.Mui-focused": {
         bgcolor: "#FFF1CE",
       },
+      '&:hover': {
+        bgcolor: '#f5cd67'
+      }
     },
   },
   name,
