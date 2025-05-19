@@ -1,9 +1,10 @@
-import './ourServices.css'
+import "./ourServices.css";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
-import { CardService } from "../CardService/CardService";
-import { listServiceCard, seo } from "../../const/const";
+import { seo } from "../../const/const";
 import { MotionDiv, MotionTypography } from "../MotionComponents/MuiMotion";
 import { SeoHelmet } from "../SeoHelmet/SeoHelmet";
+import { useState } from "react";
+import { BookNowTransition } from "../Stepper/BookNow";
 
 export const OurServices = () => {
   const servicesKeys = Object.keys(
@@ -11,6 +12,11 @@ export const OurServices = () => {
   ) as (keyof typeof seo.services)[];
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [displayForm, setDisplayForm] = useState(false);
+
+  const handleDisplayStepService = (value: boolean) => {
+    setDisplayForm(value);
+  };
 
   return (
     <Box
@@ -18,13 +24,13 @@ export const OurServices = () => {
       bgcolor={"#FFF8E7"}
       paddingInline={"30px"}
       paddingBlock={"50px"}
-      position={'relative'}
+      position={"relative"}
     >
       {servicesKeys.map((key) => (
         <SeoHelmet key={key} pageKey={key} />
       ))}
-      <MotionDiv 
-        className='box-desc-roadside-assistance' 
+      <MotionDiv
+        className="box-desc-roadside-assistance"
         initial={{ opacity: 0, y: 150 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -52,28 +58,11 @@ export const OurServices = () => {
       >
         OUR SERVICES
       </MotionTypography>
-
-      <Box
-        sx={{
-          marginInline: isMobile ? "60px" : "120px",
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          gap: isMobile ? "20px" : "15px",
-        }}
-      >
-        {listServiceCard.map((service) => (
-          <CardService
-            key={service.id}
-            id={service.id}
-            image={service.image}
-            title={service.title}
-            desc={service.desc}
-            alt={service.alt}
-          />
-        ))}
-      </Box>
+      <BookNowTransition
+        displayForm={displayForm}
+        isMobile={isMobile}
+        handleDisplay={handleDisplayStepService}
+      />
     </Box>
   );
 };

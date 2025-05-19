@@ -65,7 +65,12 @@ export const CardService: FC<ServiceCard> = (service) => {
           >
             {service.desc}
           </p>
-          <button className="btnBookNow">Book Now!</button>
+          <button
+            className="btnBookNow"
+            onClick={() => service.handleDisplay?.(true)}
+          >
+            Book Now!
+          </button>
         </Box>
       </CardContent>
     </MotionCard>

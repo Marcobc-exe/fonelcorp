@@ -4,9 +4,30 @@ export type ServiceCard = {
   title: string;
   desc: string;
   alt: string;
+  handleDisplay?: (value: boolean) => void;
 };
 
 export type Content = {
   label: string;
   target: string;
 }
+
+export type InputsFormServices = string & {
+  owner: {
+    name: string;
+    email: string;
+    phone: string;
+  };
+  vehichle: {
+    make: string;
+    model: string;
+    color: string;
+    year: string;
+    licensePlate: string;
+  };
+  appointment: {
+    date: string;
+    time: string;
+    address: string;
+  };
+};

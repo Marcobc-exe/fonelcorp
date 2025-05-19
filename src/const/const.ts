@@ -110,6 +110,7 @@ export const whatsAppLink = "https://wa.me/14034661621";
 export const email = "roadside@fonel.ca";
 export const phone = "403-466-1621";
 export const call = `tel:+1${phone.replace("-", "")}`;
+export const steps = ["Owner", "Vehicle", "Appointment"];
 
 export const seo = {
   services: {

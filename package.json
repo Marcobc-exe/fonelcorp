@@ -1,7 +1,7 @@
 {
   "name": "fonel-corp-roadside-assistance",
   "private": true,
-  "version": "1.0.7",
+  "version": "1.0.6",
   "type": "module",
   "scripts": {
     "dev": "vite",
