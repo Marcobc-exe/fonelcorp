@@ -11,10 +11,10 @@ import type { InputsFormServices, ServiceCard } from "../../types/service";
 
 type Props = {
   serviceSelected: ServiceCard | null;
-  handleHideForm: () => void;
+  handleModal: (value: boolean) => void;
 };
 
-export const StepperServices: FC<Props> = ({ serviceSelected, handleHideForm }) => {
+export const StepperServices: FC<Props> = ({ serviceSelected, handleModal }) => {
   const formRef = useRef<HTMLFormElement>(null);
   const { control, handleSubmit, reset } = useForm<InputsFormServices>({
     defaultValues: {
@@ -23,7 +23,7 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleHideForm }) 
         email: "",
         phone: "",
       },
-      vehichle: {
+      vehicle: {
         make: "",
         model: "",
         color: "",
@@ -41,7 +41,7 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleHideForm }) 
   const [completed, setCompleted] = useState<{
     [k: number]: boolean;
   }>({});
-  console.log(completed)
+  // console.log(completed)
   const totalSteps = () => steps.length;
 
   // ? return {number} amount of steps completed
@@ -81,16 +81,30 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleHideForm }) 
   };
 
   const onSubmit: SubmitHandler<InputsFormServices> = (data: InputsFormServices) => {
-    console.log('finish!?')
+    if (!formRef.current) return;
     console.log(formRef.current)
     console.log(data)
     handleComplete();
+    /* 
+      owner.name
+      owner.email
+      owner.phone
+      vehicle.make
+      vehicle.model
+      vehicle.color
+      vehicle.year
+      vehicle.licensePlate
+      appointment.date
+      appointment.time
+      appointment.address
+    */
   }
 
   const handleOnSubmit = () => {
     handleSubmit(onSubmit)();
   }
 
+  // auto-scroll
   useEffect(() => {
     if (formRef.current){
       formRef.current.scrollIntoView({
@@ -105,7 +119,6 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleHideForm }) 
       <StepperTopBar
         completed={completed}
         activeStep={activeStep}
-        handleHideForm={handleHideForm}
       />
       <>
         {allStepsCompleted() ? (
@@ -121,7 +134,7 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleHideForm }) 
               control={control}
               activeStep={activeStep}
               serviceSelected={serviceSelected}
-              name={["owner", "vehichle", "appointment"]}
+              name={["owner", "vehicle", "appointment"]}
             />
             <BottomSteperBar
               completed={completed}
@@ -132,6 +145,7 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleHideForm }) 
               completedSteps={completedSteps}
               handleComplete={handleComplete}
               handleOnSubmit={handleOnSubmit}
+              handleModal={handleModal}
             />
           </Box>
         )}

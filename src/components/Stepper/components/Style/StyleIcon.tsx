@@ -1,3 +1,4 @@
+import './stylesComponents.css'
 import type { StepIconProps } from "@mui/material";
 import { ColorlibStepIconRoot } from "./StyleStepRoot";
 import type { ReactElement } from "react";
@@ -8,21 +9,21 @@ import {
   DirectionsCar,
 } from "@mui/icons-material";
 
-const icons: { [index: string]: ReactElement<unknown> } = {
-  1: <Person />,
-  2: <DirectionsCar />,
-  3: <CalendarMonth />,
-};
-
 export const ColorlibStepIcon = (props: StepIconProps) => {
   const { active, completed, className } = props;
-
+  console.log(active)
+  const icons: { [index: string]: ReactElement<unknown> } = {
+    1: <Person className={`icon-top ${active}`} />,
+    2: <DirectionsCar className={`icon-top ${active}`} />,
+    3: <CalendarMonth className={`icon-top ${active}`} />,
+  };
+  
   return (
     <ColorlibStepIconRoot
       ownerState={{ completed, active }}
       className={className}
     >
-      {completed ? <Check /> : icons[String(props.icon)]}
+      {completed ? <Check className='icon-top-checked' /> : icons[String(props.icon)]}
     </ColorlibStepIconRoot>
   );
 };

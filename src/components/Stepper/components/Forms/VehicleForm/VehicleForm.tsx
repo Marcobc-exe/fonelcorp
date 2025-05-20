@@ -6,16 +6,22 @@ import { MotionBox } from "../../../../MotionComponents/MuiMotion";
 type Props<T extends FieldValues> = {
   control: Control<T>;
   name: Path<T>;
+  activeStep: number;
 };
 
 export const VehicleForm = <T extends FieldValues>({
   control,
   name,
+  activeStep,
 }: Props<T>) => {
   return (
-    <Box display={"flex"} flexDirection={"column"} gap={4}>
+    <Box
+      display={activeStep === 1 ? "flex" : "none"}
+      flexDirection={"column"}
+      gap={4}
+    >
       <p>Vehicle information:</p>
-      <MotionBox display={'flex'} flexDirection={'row'} gap={2}>
+      <MotionBox display={"flex"} flexDirection={"row"} gap={2}>
         <Input
           size={12}
           control={control}
@@ -33,7 +39,7 @@ export const VehicleForm = <T extends FieldValues>({
           fullWidth={true}
         />
       </MotionBox>
-      <MotionBox display={'flex'} flexDirection={'row'} gap={2}>
+      <MotionBox display={"flex"} flexDirection={"row"} gap={2}>
         <Input
           size={12}
           control={control}

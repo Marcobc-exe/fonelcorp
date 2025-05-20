@@ -7,13 +7,11 @@ import { ColorlibStepIcon } from "../Style/StyleIcon";
 type StepeerBarProps = {
   activeStep: number;
   completed: { [k: number]: boolean };
-  handleHideForm: () => void;
 };
 
 export const StepperTopBar: FC<StepeerBarProps> = ({
   activeStep,
   completed,
-  handleHideForm,
 }) => {
   return (
     <Stepper
@@ -26,8 +24,6 @@ export const StepperTopBar: FC<StepeerBarProps> = ({
         <Step key={label} completed={completed[index]}>
           <StepLabel
             color="inherit"
-            // onClick={handleStep(index)}
-            // StepIconComponent={ColorlibStepIcon}
             slots={{
               stepIcon: ColorlibStepIcon,
             }}
@@ -36,12 +32,6 @@ export const StepperTopBar: FC<StepeerBarProps> = ({
           </StepLabel>
         </Step>
       ))}
-      <button
-        onClick={() => handleHideForm()}
-        style={{ cursor: "pointer" }}
-      >
-        Close
-      </button>
     </Stepper>
   );
 };

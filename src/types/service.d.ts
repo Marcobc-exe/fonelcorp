@@ -18,7 +18,7 @@ export type InputsFormServices = string & {
     email: string;
     phone: string;
   };
-  vehichle: {
+  vehicle: {
     make: string;
     model: string;
     color: string;

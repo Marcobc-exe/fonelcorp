@@ -5,14 +5,21 @@ import { MotionGrid } from "../../../../MotionComponents/MuiMotion";
 type Props<T extends FieldValues> = {
   control: Control<T>;
   name: Path<T>;
+  activeStep: number;
 };
 
 export const OwnerForm = <T extends FieldValues>({
   control,
   name,
+  activeStep,
 }: Props<T>) => {
   return (
-    <MotionGrid display={"flex"} flexDirection={"column"} gap={2} size={4}>
+    <MotionGrid
+      display={activeStep === 0 ? "flex" : "none"}
+      flexDirection={"column"}
+      gap={2}
+      size={4}
+    >
       <p>Owner information:</p>
       <Input
         size={12}
@@ -28,6 +35,7 @@ export const OwnerForm = <T extends FieldValues>({
         name={`${name}.email` as Path<T>}
         label="Email"
         variant="filled"
+        type="email"
         fullWidth={true}
       />
       <Input

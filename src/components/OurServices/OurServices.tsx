@@ -6,6 +6,7 @@ import { SeoHelmet } from "../SeoHelmet/SeoHelmet";
 import { useState } from "react";
 import { BookNowTransition } from "../Stepper/BookNow";
 import type { ServiceCard } from "../../types/service";
+import { CancelServiceModal } from "../Modals/CancelServiceModal";
 
 export const OurServices = () => {
   const servicesKeys = Object.keys(
@@ -14,16 +15,24 @@ export const OurServices = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [displayForm, setDisplayForm] = useState<boolean>(false);
-  const [serviceSelected, setServiceSelected] = useState<ServiceCard | null>(null);
+  const [serviceSelected, setServiceSelected] = useState<ServiceCard | null>(
+    null
+  );
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   const handleHideForm = () => {
     setDisplayForm(false);
-  }
+    handleModal(false);
+  };
 
   const handleShowForm = (service: ServiceCard) => {
     setDisplayForm(true);
     setServiceSelected(service);
-  }
+  };
+
+  const handleModal = (value: boolean) => {
+    setOpenModal(value);
+  };
 
   return (
     <Box
@@ -70,6 +79,11 @@ export const OurServices = () => {
         isMobile={isMobile}
         serviceSelected={serviceSelected}
         handleShowForm={handleShowForm}
+        handleModal={handleModal}
+      />
+      <CancelServiceModal
+        open={openModal}
+        handleModal={handleModal}
         handleHideForm={handleHideForm}
       />
     </Box>

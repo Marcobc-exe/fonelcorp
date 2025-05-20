@@ -5,14 +5,16 @@ import { Box } from "@mui/material";
 type Props<T extends FieldValues> = {
   control: Control<T>;
   name: Path<T>;
+  activeStep: number;
 };
 
 export const AppointmentForm = <T extends FieldValues>({
   control,
   name,
+  activeStep
 }: Props<T>) => {
   return (
-    <Box display={"flex"} flexDirection={"column"} gap={4}>
+    <Box display={activeStep === 2 ? 'flex' : 'none'} flexDirection={"column"} gap={4}>
       <p>Select your date, time and current address:</p>
       <Input
         size={12}

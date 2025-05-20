@@ -18,29 +18,22 @@ export const CurrentForm = <T extends FieldValues>({
   name,
   serviceSelected,
 }: CurrentFormProps<T>) => {
-  const forms = [
-    <OwnerForm control={control} name={name[0]} />,
-    <VehicleForm control={control} name={name[1]} />,
-    <AppointmentForm control={control} name={name[2]} />,
-  ];
 
   return (
     <MotionGrid
       container
       bgcolor={"#FFF8E7"}
-      // bgcolor={"green"}
       paddingInline={"30px"}
       paddingBlock={"50px"}
-      alignItems={'center'}
+      alignItems={"center"}
     >
       <MotionGrid
         size={4}
-        display={'flex'}
-        flexDirection={'column'}
-        // bgcolor={'green'}
-        alignItems={'center'}
-        paddingInline={'18px'}
-        width={'50%'}
+        display={"flex"}
+        flexDirection={"column"}
+        alignItems={"center"}
+        paddingInline={"18px"}
+        width={"50%"}
       >
         <img
           src={serviceSelected?.image}
@@ -54,9 +47,17 @@ export const CurrentForm = <T extends FieldValues>({
           }}
         />
         <h3>{serviceSelected?.title}</h3>
-        <p style={{ textAlign: 'center', width: '60%' }}>{serviceSelected?.desc}</p>
+        <p style={{ textAlign: "center", width: "60%" }}>
+          {serviceSelected?.desc}
+        </p>
       </MotionGrid>
-      {forms[activeStep]}
+      <OwnerForm control={control} name={name[0]} activeStep={activeStep} />
+      <VehicleForm control={control} name={name[1]} activeStep={activeStep} />
+      <AppointmentForm
+        control={control}
+        name={name[2]}
+        activeStep={activeStep}
+      />
     </MotionGrid>
   );
 };
