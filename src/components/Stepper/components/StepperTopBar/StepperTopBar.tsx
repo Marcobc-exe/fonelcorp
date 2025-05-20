@@ -7,13 +7,13 @@ import { ColorlibStepIcon } from "../Style/StyleIcon";
 type StepeerBarProps = {
   activeStep: number;
   completed: { [k: number]: boolean };
-  handleDisplay: (value: boolean) => void;
+  handleHideForm: () => void;
 };
 
 export const StepperTopBar: FC<StepeerBarProps> = ({
   activeStep,
   completed,
-  handleDisplay,
+  handleHideForm,
 }) => {
   return (
     <Stepper
@@ -37,7 +37,7 @@ export const StepperTopBar: FC<StepeerBarProps> = ({
         </Step>
       ))}
       <button
-        onClick={() => handleDisplay(false)}
+        onClick={() => handleHideForm()}
         style={{ cursor: "pointer" }}
       >
         Close

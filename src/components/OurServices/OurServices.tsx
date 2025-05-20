@@ -5,6 +5,7 @@ import { MotionDiv, MotionTypography } from "../MotionComponents/MuiMotion";
 import { SeoHelmet } from "../SeoHelmet/SeoHelmet";
 import { useState } from "react";
 import { BookNowTransition } from "../Stepper/BookNow";
+import type { ServiceCard } from "../../types/service";
 
 export const OurServices = () => {
   const servicesKeys = Object.keys(
@@ -12,11 +13,17 @@ export const OurServices = () => {
   ) as (keyof typeof seo.services)[];
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const [displayForm, setDisplayForm] = useState(false);
+  const [displayForm, setDisplayForm] = useState<boolean>(false);
+  const [serviceSelected, setServiceSelected] = useState<ServiceCard | null>(null);
 
-  const handleDisplayStepService = (value: boolean) => {
-    setDisplayForm(value);
-  };
+  const handleHideForm = () => {
+    setDisplayForm(false);
+  }
+
+  const handleShowForm = (service: ServiceCard) => {
+    setDisplayForm(true);
+    setServiceSelected(service);
+  }
 
   return (
     <Box
@@ -61,7 +68,9 @@ export const OurServices = () => {
       <BookNowTransition
         displayForm={displayForm}
         isMobile={isMobile}
-        handleDisplay={handleDisplayStepService}
+        serviceSelected={serviceSelected}
+        handleShowForm={handleShowForm}
+        handleHideForm={handleHideForm}
       />
     </Box>
   );

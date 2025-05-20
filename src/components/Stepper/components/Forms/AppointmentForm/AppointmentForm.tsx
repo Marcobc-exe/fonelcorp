@@ -13,6 +13,7 @@ export const AppointmentForm = <T extends FieldValues>({
 }: Props<T>) => {
   return (
     <Box display={"flex"} flexDirection={"column"} gap={4}>
+      <p>Select your date, time and current address:</p>
       <Input
         size={12}
         control={control}

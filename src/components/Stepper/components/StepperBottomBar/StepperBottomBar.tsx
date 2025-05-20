@@ -9,6 +9,7 @@ type BottomSteperBarProps = {
   totalSteps: () => number;
   completedSteps: () => number;
   handleComplete: () => void;
+  handleOnSubmit: () => void;
 };
 
 export const BottomSteperBar: React.FC<BottomSteperBarProps> = ({
@@ -19,6 +20,7 @@ export const BottomSteperBar: React.FC<BottomSteperBarProps> = ({
   totalSteps,
   completedSteps,
   handleComplete,
+  handleOnSubmit,
 }) => {
   return (
     <Box
@@ -26,7 +28,8 @@ export const BottomSteperBar: React.FC<BottomSteperBarProps> = ({
         display: "flex",
         flexDirection: "row",
         pt: 2,
-        bgcolor: "yellow",
+        // bgcolor: "yellow",
+        paddingInline: '10%'
         // position: 'fixed',
         // bottom: 5,
       }}
@@ -42,7 +45,7 @@ export const BottomSteperBar: React.FC<BottomSteperBarProps> = ({
 
       <Box sx={{ flex: "1 1 auto" }} />
 
-      <Button onClick={handleNext} sx={{ mr: 1 }}>
+      <Button color="inherit" onClick={handleNext} sx={{ mr: 1 }}>
         Next
       </Button>
       <HandleStepsButton
@@ -51,6 +54,7 @@ export const BottomSteperBar: React.FC<BottomSteperBarProps> = ({
         totalSteps={totalSteps}
         completedSteps={completedSteps}
         handleComplete={handleComplete}
+        handleOnSubmit={handleOnSubmit}
       />
     </Box>
   );

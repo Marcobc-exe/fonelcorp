@@ -7,6 +7,7 @@ type HandleStepsButtonProps = {
   handleComplete: () => void;
   completedSteps: () => number;
   totalSteps: () => number;
+  handleOnSubmit: () => void;
 };
 
 export const HandleStepsButton: React.FC<HandleStepsButtonProps> = ({
@@ -15,19 +16,30 @@ export const HandleStepsButton: React.FC<HandleStepsButtonProps> = ({
   handleComplete,
   completedSteps,
   totalSteps,
+  handleOnSubmit,
 }) => {
-  const labelStep =
-    completedSteps() === totalSteps() - 1 ? "Finish" : "Complete Step";
+  const labelStep = completedSteps() === totalSteps() - 1;
 
   return (
     <>
       {activeStep !== steps.length &&
         (completed[activeStep] ? (
           <Typography variant="caption" sx={{ display: "inline-block" }}>
-            Step {activeStep + 1} already completed
+            Step {activeStep + 1} done!
           </Typography>
         ) : (
-          <Button onClick={handleComplete}>{labelStep}</Button>
+          <Button
+            type={labelStep ? "submit" : "button"}
+            onClick={() => {
+              if (labelStep) {
+                handleOnSubmit();
+              } else {
+                handleComplete();
+              }
+            }}
+          >
+            {labelStep ? "Finish" : "Complete Step"}
+          </Button>
         ))}
     </>
   );

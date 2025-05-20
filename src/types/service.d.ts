@@ -4,7 +4,7 @@ export type ServiceCard = {
   title: string;
   desc: string;
   alt: string;
-  handleDisplay?: (value: boolean) => void;
+  handleShowForm: (service: ServiceCard) => void;
 };
 
 export type Content = {

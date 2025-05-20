@@ -1,6 +1,6 @@
 import type { Control, FieldValues, Path } from "react-hook-form";
 import { Input } from "../../../../Input/Input";
-import { Box } from "@mui/material";
+import { MotionGrid } from "../../../../MotionComponents/MuiMotion";
 
 type Props<T extends FieldValues> = {
   control: Control<T>;
@@ -12,7 +12,8 @@ export const OwnerForm = <T extends FieldValues>({
   name,
 }: Props<T>) => {
   return (
-    <Box display={"flex"} flexDirection={"column"} gap={4}>
+    <MotionGrid display={"flex"} flexDirection={"column"} gap={2} size={4}>
+      <p>Owner information:</p>
       <Input
         size={12}
         control={control}
@@ -37,6 +38,6 @@ export const OwnerForm = <T extends FieldValues>({
         variant="filled"
         fullWidth={true}
       />
-    </Box>
+    </MotionGrid>
   );
 };

@@ -3,22 +3,30 @@ import type { FC } from "react";
 import { listServiceCard } from "../../const/const";
 import { CardService } from "../CardService/CardService";
 import { StepperServices } from "./StepperServices";
+import type { ServiceCard } from "../../types/service";
 
 type Props = {
   displayForm: boolean;
   isMobile: boolean;
-  handleDisplay: (value: boolean) => void;
+  serviceSelected: ServiceCard | null;
+  handleShowForm: (service: ServiceCard) => void;
+  handleHideForm: () => void;
 };
 
 export const BookNowTransition: FC<Props> = ({
   displayForm,
   isMobile,
-  handleDisplay,
+  serviceSelected,
+  handleShowForm,
+  handleHideForm,
 }) => {
   return (
     <>
       {displayForm ? (
-        <StepperServices handleDisplay={handleDisplay} />
+        <StepperServices
+          serviceSelected={serviceSelected}
+          handleHideForm={handleHideForm}
+        />
       ) : (
         <Box
           sx={{
@@ -38,7 +46,7 @@ export const BookNowTransition: FC<Props> = ({
               title={service.title}
               desc={service.desc}
               alt={service.alt}
-              handleDisplay={handleDisplay}
+              handleShowForm={handleShowForm}
             />
           ))}
         </Box>

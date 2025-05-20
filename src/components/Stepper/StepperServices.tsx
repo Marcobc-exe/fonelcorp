@@ -1,19 +1,20 @@
 import "./stepperServices.css";
 import { Box } from "@mui/material";
 import { StepperTopBar } from "./components/StepperTopBar/StepperTopBar";
-import { useRef, useState, type FC } from "react";
+import { useEffect, useRef, useState, type FC } from "react";
 import { steps } from "../../const/const";
 import { AllStepsCompleted } from "./components/AllStepsCompleted/AllStepsCompleted";
 import { BottomSteperBar } from "./components/StepperBottomBar/StepperBottomBar";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { CurrentForm } from "./components/Forms/CurrentForm";
-import type { InputsFormServices } from "../../types/service";
+import type { InputsFormServices, ServiceCard } from "../../types/service";
 
 type Props = {
-  handleDisplay: (value: boolean) => void;
+  serviceSelected: ServiceCard | null;
+  handleHideForm: () => void;
 };
 
-export const StepperServices: FC<Props> = ({ handleDisplay }) => {
+export const StepperServices: FC<Props> = ({ serviceSelected, handleHideForm }) => {
   const formRef = useRef<HTMLFormElement>(null);
   const { control, handleSubmit, reset } = useForm<InputsFormServices>({
     defaultValues: {
@@ -40,7 +41,7 @@ export const StepperServices: FC<Props> = ({ handleDisplay }) => {
   const [completed, setCompleted] = useState<{
     [k: number]: boolean;
   }>({});
-
+  console.log(completed)
   const totalSteps = () => steps.length;
 
   // ? return {number} amount of steps completed
@@ -79,16 +80,32 @@ export const StepperServices: FC<Props> = ({ handleDisplay }) => {
     handleNext();
   };
 
-  const onSubmit: SubmitHandler<InputsFormServices> = () => {
+  const onSubmit: SubmitHandler<InputsFormServices> = (data: InputsFormServices) => {
+    console.log('finish!?')
     console.log(formRef.current)
+    console.log(data)
+    handleComplete();
   }
+
+  const handleOnSubmit = () => {
+    handleSubmit(onSubmit)();
+  }
+
+  useEffect(() => {
+    if (formRef.current){
+      formRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [activeStep]);
 
   return (
     <Box className={"container-services-stepper"}>
       <StepperTopBar
-        activeStep={activeStep}
         completed={completed}
-        handleDisplay={handleDisplay}
+        activeStep={activeStep}
+        handleHideForm={handleHideForm}
       />
       <>
         {allStepsCompleted() ? (
@@ -98,20 +115,23 @@ export const StepperServices: FC<Props> = ({ handleDisplay }) => {
             ref={formRef}
             component={'form'}
             onSubmit={handleSubmit(onSubmit)}
+            sx={{ scrollMarginTop: "160px" }}
           >
             <CurrentForm
               control={control}
               activeStep={activeStep}
+              serviceSelected={serviceSelected}
               name={["owner", "vehichle", "appointment"]}
             />
             <BottomSteperBar
-              activeStep={activeStep}
               completed={completed}
+              activeStep={activeStep}
               totalSteps={totalSteps}
-              completedSteps={completedSteps}
               handleBack={handleBack}
-              handleComplete={handleComplete}
               handleNext={handleNext}
+              completedSteps={completedSteps}
+              handleComplete={handleComplete}
+              handleOnSubmit={handleOnSubmit}
             />
           </Box>
         )}
