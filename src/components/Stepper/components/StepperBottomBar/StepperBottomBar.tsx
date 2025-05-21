@@ -30,10 +30,7 @@ export const BottomSteperBar: React.FC<BottomSteperBarProps> = ({
         display: "flex",
         flexDirection: "row",
         pt: 2,
-        // bgcolor: "yellow",
         paddingInline: "10%",
-        // position: 'fixed',
-        // bottom: 5,
       }}
     >
       <Button color="inherit" onClick={() => handleModal(true)}>

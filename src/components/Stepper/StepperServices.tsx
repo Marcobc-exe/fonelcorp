@@ -7,16 +7,17 @@ import { AllStepsCompleted } from "./components/AllStepsCompleted/AllStepsComple
 import { BottomSteperBar } from "./components/StepperBottomBar/StepperBottomBar";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { CurrentForm } from "./components/Forms/CurrentForm";
-import type { InputsFormServices, ServiceCard } from "../../types/service";
+import type { FormDataMap, HandleInputsForm, InputsFormServices, ServiceCard } from "../../types/service";
 
 type Props = {
   serviceSelected: ServiceCard | null;
   handleModal: (value: boolean) => void;
+  handleHideForm: () => void;
 };
 
-export const StepperServices: FC<Props> = ({ serviceSelected, handleModal }) => {
+export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handleHideForm }) => {
   const formRef = useRef<HTMLFormElement>(null);
-  const { control, handleSubmit, reset } = useForm<InputsFormServices>({
+  const { control, handleSubmit, getValues, setError, formState: { errors }, clearErrors } = useForm<InputsFormServices>({
     defaultValues: {
       owner: {
         name: "",
@@ -41,7 +42,8 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal }) => 
   const [completed, setCompleted] = useState<{
     [k: number]: boolean;
   }>({});
-  // console.log(completed)
+
+  const currentForm = ['owner', 'vehicle', 'appointment'][activeStep] as keyof FormDataMap;
   const totalSteps = () => steps.length;
 
   // ? return {number} amount of steps completed
@@ -51,12 +53,6 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal }) => 
   const allStepsCompleted = () => completedSteps() === totalSteps();
   const isLastStep = () => activeStep === totalSteps() - 1;
   const firstStepCompleted = () => steps.findIndex((_, i) => !(i in completed));
-
-  const handleReset = () => {
-    setActiveStep(0);
-    setCompleted({});
-    reset();
-  };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -72,7 +68,23 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal }) => 
     setActiveStep(newActiveStep);
   };
 
+  const handleInputsDone = (form: HandleInputsForm) => Object.values(form).some(input => input.length > 0);
+
+  const handleMessageError = () => {
+    const isFormDone = handleInputsDone(getValues(currentForm));
+  
+    if (!isFormDone) {
+      setError(currentForm, { message: "Please, complete the form before continue!" })
+      return true
+    }
+
+    clearErrors(currentForm);
+    return false
+  }
+
   const handleComplete = () => {
+    if (handleMessageError()) return;
+
     setCompleted({
       ...completed,
       [activeStep]: true,
@@ -101,6 +113,7 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal }) => 
   }
 
   const handleOnSubmit = () => {
+    if (handleMessageError()) return;
     handleSubmit(onSubmit)();
   }
 
@@ -122,7 +135,7 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal }) => 
       />
       <>
         {allStepsCompleted() ? (
-          <AllStepsCompleted handleReset={handleReset} />
+          <AllStepsCompleted handleHideForm={handleHideForm} />
         ) : (
           <Box
             ref={formRef}
@@ -135,6 +148,7 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal }) => 
               activeStep={activeStep}
               serviceSelected={serviceSelected}
               name={["owner", "vehicle", "appointment"]}
+              errors={errors}
             />
             <BottomSteperBar
               completed={completed}

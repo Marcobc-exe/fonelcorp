@@ -22,7 +22,7 @@ export const OurServices = () => {
 
   const handleHideForm = () => {
     setDisplayForm(false);
-    handleModal(false);
+    if (openModal) handleModal(false);
   };
 
   const handleShowForm = (service: ServiceCard) => {
@@ -80,6 +80,7 @@ export const OurServices = () => {
         serviceSelected={serviceSelected}
         handleShowForm={handleShowForm}
         handleModal={handleModal}
+        handleHideForm={handleHideForm}
       />
       <CancelServiceModal
         open={openModal}

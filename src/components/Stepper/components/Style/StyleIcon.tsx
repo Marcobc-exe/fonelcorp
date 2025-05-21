@@ -11,7 +11,6 @@ import {
 
 export const ColorlibStepIcon = (props: StepIconProps) => {
   const { active, completed, className } = props;
-  console.log(active)
   const icons: { [index: string]: ReactElement<unknown> } = {
     1: <Person className={`icon-top ${active}`} />,
     2: <DirectionsCar className={`icon-top ${active}`} />,

@@ -24,7 +24,15 @@ export const HandleStepsButton: React.FC<HandleStepsButtonProps> = ({
     <>
       {activeStep !== steps.length &&
         (completed[activeStep] ? (
-          <Typography variant="caption" sx={{ display: "inline-block" }}>
+          <Typography
+            variant="caption"
+            sx={{
+              display: "inline-block",
+              fontSize: "15px",
+              alignContent: "center",
+              textTransform: "uppercase",
+            }}
+          >
             Step {activeStep + 1} done!
           </Typography>
         ) : (
@@ -36,6 +44,9 @@ export const HandleStepsButton: React.FC<HandleStepsButtonProps> = ({
               } else {
                 handleComplete();
               }
+            }}
+            sx={{
+              color: '#1F355E'
             }}
           >
             {labelStep ? "Finish" : "Complete Step"}

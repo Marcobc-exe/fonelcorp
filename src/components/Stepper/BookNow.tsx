@@ -11,6 +11,7 @@ type Props = {
   serviceSelected: ServiceCard | null;
   handleShowForm: (service: ServiceCard) => void;
   handleModal: (value: boolean) => void;
+  handleHideForm: () => void;
 };
 
 export const BookNowTransition: FC<Props> = ({
@@ -19,6 +20,7 @@ export const BookNowTransition: FC<Props> = ({
   serviceSelected,
   handleShowForm,
   handleModal,
+  handleHideForm
 }) => {
   return (
     <>
@@ -26,6 +28,7 @@ export const BookNowTransition: FC<Props> = ({
         <StepperServices
           serviceSelected={serviceSelected}
           handleModal={handleModal}
+          handleHideForm={handleHideForm}
         />
       ) : (
         <Box

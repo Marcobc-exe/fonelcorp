@@ -1,15 +1,17 @@
-import type { Control, FieldValues, Path } from "react-hook-form";
+import type { Control, FieldErrors, FieldValues, Path } from "react-hook-form";
 import { AppointmentForm } from "./AppointmentForm/AppointmentForm";
 import { OwnerForm } from "./OwnerForm/OwnerForm";
 import { VehicleForm } from "./VehicleForm/VehicleForm";
-import type { ServiceCard } from "../../../../types/service";
+import type { InputsFormServices, ServiceCard } from "../../../../types/service";
 import { MotionGrid } from "../../../MotionComponents/MuiMotion";
+import { ErrorMessage } from "../Errors/ErrorMessage";
 
 type CurrentFormProps<T extends FieldValues> = {
   activeStep: number;
   control: Control<T>;
   name: Path<T>[];
   serviceSelected: ServiceCard | null;
+  errors: FieldErrors<InputsFormServices>;
 };
 
 export const CurrentForm = <T extends FieldValues>({
@@ -17,6 +19,7 @@ export const CurrentForm = <T extends FieldValues>({
   control,
   name,
   serviceSelected,
+  errors
 }: CurrentFormProps<T>) => {
 
   return (
@@ -26,6 +29,7 @@ export const CurrentForm = <T extends FieldValues>({
       paddingInline={"30px"}
       paddingBlock={"50px"}
       alignItems={"center"}
+      position={'relative'}
     >
       <MotionGrid
         size={4}
@@ -58,6 +62,7 @@ export const CurrentForm = <T extends FieldValues>({
         name={name[2]}
         activeStep={activeStep}
       />
+      <ErrorMessage errors={errors} activeStep={activeStep}/>
     </MotionGrid>
   );
 };
