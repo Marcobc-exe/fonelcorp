@@ -18,7 +18,7 @@ export const OwnerForm = <T extends FieldValues>({
       display={activeStep === 0 ? "flex" : "none"}
       flexDirection={"column"}
       gap={2}
-      size={4}
+      size={{ sm: 12, md: 4, xs: 12 }}
     >
       <p>Owner information:</p>
       <Input

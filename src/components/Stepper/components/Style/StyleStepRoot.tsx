@@ -1,7 +1,7 @@
 import { styled } from "@mui/material";
 
 export const ColorlibStepIconRoot = styled("div")<{
-  ownerState: { completed?: boolean; active?: boolean };
+  ownerState: { completed?: boolean; active?: boolean; isMobile?: boolean };
 }>(({ theme }) => ({
   backgroundColor: "#ccc",
   zIndex: 1,
@@ -29,5 +29,14 @@ export const ColorlibStepIconRoot = styled("div")<{
         backgroundColor: "#294971",
       },
     },
+    {
+      props: ({ ownerState }) => ownerState.isMobile,
+      style: {
+        width: 40,
+        height: 40,
+        position: 'relative',
+        top: 3
+      }
+    }
   ],
 }));

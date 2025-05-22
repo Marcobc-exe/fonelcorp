@@ -1,7 +1,7 @@
 import type { Control, FieldValues, Path } from "react-hook-form";
 import { Input } from "../../../../Input/Input";
-import { Box } from "@mui/material";
-import { MotionBox } from "../../../../MotionComponents/MuiMotion";
+import { MotionBox, MotionGrid } from "../../../../MotionComponents/MuiMotion";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 type Props<T extends FieldValues> = {
   control: Control<T>;
@@ -14,14 +14,18 @@ export const VehicleForm = <T extends FieldValues>({
   name,
   activeStep,
 }: Props<T>) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
-    <Box
+    <MotionGrid
       display={activeStep === 1 ? "flex" : "none"}
       flexDirection={"column"}
-      gap={4}
+      gap={{ xs: 2, sm: 4 }}
+      size={{ sm: 12, md: 6, xs: 12 }}
     >
       <p>Vehicle information:</p>
-      <MotionBox display={"flex"} flexDirection={"row"} gap={2}>
+      <MotionBox display={"flex"} flexDirection={isMobile ? "column" : "row"} gap={2}>
         <Input
           size={12}
           control={control}
@@ -39,7 +43,7 @@ export const VehicleForm = <T extends FieldValues>({
           fullWidth={true}
         />
       </MotionBox>
-      <MotionBox display={"flex"} flexDirection={"row"} gap={2}>
+      <MotionBox display={"flex"} flexDirection={isMobile ? "column" : "row"} gap={2}>
         <Input
           size={12}
           control={control}
@@ -65,6 +69,6 @@ export const VehicleForm = <T extends FieldValues>({
         variant="filled"
         fullWidth={true}
       />
-    </Box>
+    </MotionGrid>
   );
 };

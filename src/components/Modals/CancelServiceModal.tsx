@@ -1,5 +1,5 @@
 import "./modal.css";
-import { Box, Modal } from "@mui/material";
+import { Box, Modal, useMediaQuery, useTheme } from "@mui/material";
 import type { FC } from "react";
 
 type Props = {
@@ -8,31 +8,33 @@ type Props = {
   handleHideForm: () => void;
 };
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "30%",
-  height: "200px",
-  bgcolor: "#FFF8E7",
-  boxShadow: 24,
-  p: 2,
-  border: "none",
-};
-
 export const CancelServiceModal: FC<Props> = ({
   open,
   handleModal,
   handleHideForm,
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: isMobile ?  "80%" : "30%",
+    height: "200px",
+    bgcolor: "#FFF8E7",
+    boxShadow: 24,
+    p: 2,
+    border: "none",
+  };
+
   return (
     <Modal open={open} onClose={() => handleModal(false)}>
       <Box component={"div"} sx={style} borderRadius={4}>
-        <h3 style={{ color: "#1F355E", textAlign: "center" }}>
+        <h3 className={`title-modal`}>
           Oops — closing this will reset the form. Want to keep going or exit?
         </h3>
-        <div className="div-btn-modal-cancel-form">
+        <div className={`div-btn-modal-cancel-form`}>
           <button className="btn-exit-form" onClick={handleHideForm}>
             Exit form
           </button>

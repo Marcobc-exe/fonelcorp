@@ -1,5 +1,5 @@
-import { Box, Button } from "@mui/material";
-import { HandleStepsButton } from "../HandleStepBtn/HandleStepBtn";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { LeftMobileBtns, RightMobileBtns } from "./LeftMobileBtns";
 
 type BottomSteperBarProps = {
   activeStep: number;
@@ -24,35 +24,35 @@ export const BottomSteperBar: React.FC<BottomSteperBarProps> = ({
   handleOnSubmit,
   handleModal,
 }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const under400px = window.innerWidth <= 400;
+
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "row",
-        pt: 2,
+        pt: isMobile ? 0 : 2,
         paddingInline: "10%",
       }}
     >
-      <Button color="inherit" onClick={() => handleModal(true)}>
-        Cancel
-      </Button>
-      <Button
-        color="inherit"
-        disabled={activeStep === 0}
-        onClick={handleBack}
-        sx={{ mr: 1 }}
-      >
-        Back
-      </Button>
+      <LeftMobileBtns
+        activeStep={activeStep}
+        isMobile={isMobile}
+        under400px={under400px}
+        handleBack={handleBack}
+        handleModal={handleModal}
+      />
 
       <Box sx={{ flex: "1 1 auto" }} />
 
-      <Button color="inherit" onClick={handleNext} sx={{ mr: 1 }}>
-        Next
-      </Button>
-      <HandleStepsButton
+      <RightMobileBtns
+        under400px={under400px}
+        isMobile={isMobile}
         activeStep={activeStep}
         completed={completed}
+        handleNext={handleNext}
         totalSteps={totalSteps}
         completedSteps={completedSteps}
         handleComplete={handleComplete}

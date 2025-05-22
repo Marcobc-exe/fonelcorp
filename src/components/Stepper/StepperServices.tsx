@@ -8,8 +8,8 @@ import { BottomSteperBar } from "./components/StepperBottomBar/StepperBottomBar"
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { CurrentForm } from "./components/Forms/CurrentForm";
 import type { FormDataMap, HandleInputsForm, InputsFormServices, ServiceCard } from "../../types/service";
-import emailjs from "@emailjs/browser";
-import { getEnvVariable } from "../../helper/helpers";
+// import emailjs from "@emailjs/browser";
+// import { getEnvVariable } from "../../helper/helpers";
 import { MotionBox } from "../MotionComponents/MuiMotion";
 
 type Props = {

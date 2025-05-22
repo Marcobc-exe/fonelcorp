@@ -1,6 +1,6 @@
 import type { Control, FieldValues, Path } from "react-hook-form";
 import { Input } from "../../../../Input/Input";
-import { Box } from "@mui/material";
+import { MotionGrid } from "../../../../MotionComponents/MuiMotion";
 
 type Props<T extends FieldValues> = {
   control: Control<T>;
@@ -14,7 +14,12 @@ export const AppointmentForm = <T extends FieldValues>({
   activeStep
 }: Props<T>) => {
   return (
-    <Box display={activeStep === 2 ? 'flex' : 'none'} flexDirection={"column"} gap={4}>
+    <MotionGrid 
+      display={activeStep === 2 ? 'flex' : 'none'} 
+      flexDirection={"column"} 
+      gap={{ xs: 2, sm: 4 }}
+      size={{ sm: 12, md: 4, xs: 12 }}
+    >
       <p>Select your date, time and current address:</p>
       <Input
         size={12}
@@ -40,6 +45,6 @@ export const AppointmentForm = <T extends FieldValues>({
         variant="filled"
         fullWidth={true}
       />
-    </Box>
+    </MotionGrid>
   );
 };

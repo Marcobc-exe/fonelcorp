@@ -1,4 +1,4 @@
-import { Step, StepLabel, Stepper } from "@mui/material";
+import { Step, StepLabel, Stepper, useMediaQuery, useTheme } from "@mui/material";
 import type { FC } from "react";
 import { ColorlibConnector } from "../Style/StyleConnector";
 import { steps } from "../../../../const/const";
@@ -13,6 +13,9 @@ export const StepperTopBar: FC<StepeerBarProps> = ({
   activeStep,
   completed,
 }) => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.between('xs', 'sm'));
+
   return (
     <Stepper
       nonLinear
@@ -28,7 +31,7 @@ export const StepperTopBar: FC<StepeerBarProps> = ({
               stepIcon: ColorlibStepIcon,
             }}
           >
-            {label}
+            {!isMobile && label}
           </StepLabel>
         </Step>
       ))}

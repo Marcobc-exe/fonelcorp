@@ -1,5 +1,5 @@
 import './stylesComponents.css'
-import type { StepIconProps } from "@mui/material";
+import { useMediaQuery, useTheme, type StepIconProps } from "@mui/material";
 import { ColorlibStepIconRoot } from "./StyleStepRoot";
 import type { ReactElement } from "react";
 import {
@@ -10,6 +10,8 @@ import {
 } from "@mui/icons-material";
 
 export const ColorlibStepIcon = (props: StepIconProps) => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.between('xs', 'sm'));
   const { active, completed, className } = props;
   const icons: { [index: string]: ReactElement<unknown> } = {
     1: <Person className={`icon-top ${active}`} />,
@@ -19,7 +21,7 @@ export const ColorlibStepIcon = (props: StepIconProps) => {
   
   return (
     <ColorlibStepIconRoot
-      ownerState={{ completed, active }}
+      ownerState={{ completed, active, isMobile }}
       className={className}
     >
       {completed ? <Check className='icon-top-checked' /> : icons[String(props.icon)]}

@@ -24,3 +24,8 @@
   background-color: rgba(0, 128, 0, 0.679);
   transition: .15s all ease-in-out;
 }
+
+.title-modal {
+  color: #1F355E;
+  text-align: center;
+}

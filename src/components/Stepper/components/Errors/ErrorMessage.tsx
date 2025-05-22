@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import type { FieldErrors } from "react-hook-form";
 import type { InputsFormServices } from "../../../../types/service";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 type Props = {
   errors: FieldErrors<InputsFormServices>;
@@ -8,14 +9,22 @@ type Props = {
 };
 
 export const ErrorMessage: FC<Props> = ({ errors, activeStep }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+
+  const bottom = isTablet ? '0px' : isMobile ? "5px" : '14px';
+  const position = isMobile ? 'relative' : 'absolute' 
+  const width = isTablet ? "55%" : isMobile ? "90%" : "30%"
+  const right = isMobile ? "0px" : "20%"
+
   return (
     <p
       style={{
-        // backgroundColor: 'green',
-        width: '30%',
-        position: 'absolute',
-        right: '20%',
-        bottom: '14px',
+        width,
+        position,
+        right,
+        bottom,
         color: 'red'
       }}
     >
