@@ -12,20 +12,17 @@ export const ErrorMessage: FC<Props> = ({ errors, activeStep }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
-
   const bottom = isTablet ? '0px' : isMobile ? "5px" : '14px';
-  const position = isMobile ? 'relative' : 'absolute' 
-  const width = isTablet ? "55%" : isMobile ? "90%" : "30%"
-  const right = isMobile ? "0px" : "20%"
 
   return (
     <p
       style={{
-        width,
-        position,
-        right,
         bottom,
-        color: 'red'
+        width: '100%',
+        position: 'relative',
+        color: 'red',
+        textAlign: 'right',
+        paddingRight: '16%'
       }}
     >
       {(errors?.owner && activeStep === 0) && errors?.owner?.message}
