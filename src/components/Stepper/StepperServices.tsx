@@ -8,6 +8,9 @@ import { BottomSteperBar } from "./components/StepperBottomBar/StepperBottomBar"
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { CurrentForm } from "./components/Forms/CurrentForm";
 import type { FormDataMap, HandleInputsForm, InputsFormServices, ServiceCard } from "../../types/service";
+import emailjs from "@emailjs/browser";
+import { getEnvVariable } from "../../helper/helpers";
+import { MotionBox } from "../MotionComponents/MuiMotion";
 
 type Props = {
   serviceSelected: ServiceCard | null;
@@ -17,7 +20,16 @@ type Props = {
 
 export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handleHideForm }) => {
   const formRef = useRef<HTMLFormElement>(null);
-  const { control, handleSubmit, getValues, setError, formState: { errors }, clearErrors } = useForm<InputsFormServices>({
+  const { 
+    control, 
+    handleSubmit, 
+    getValues, 
+    setError, 
+    formState: { 
+      errors,
+    }, 
+    clearErrors, 
+  } = useForm<InputsFormServices>({
     defaultValues: {
       owner: {
         name: "",
@@ -92,11 +104,25 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handl
     handleNext();
   };
 
-  const onSubmit: SubmitHandler<InputsFormServices> = (data: InputsFormServices) => {
+  const onSubmit: SubmitHandler<InputsFormServices> = async () => {
     if (!formRef.current) return;
     console.log(formRef.current)
-    console.log(data)
     handleComplete();
+
+    // try {
+    //   const response = await emailjs.sendForm(
+    //     getEnvVariable("EMAIL_SERVICE_ID"),
+    //     getEnvVariable("EMAIL_TEMPLATE_ID"),
+    //     formRef.current,
+    //     getEnvVariable("EMAIL_PUBLIC_KEY")
+    //   );
+
+    //   console.log(response);
+    //   // setSent(true);
+    // } catch (error) {
+    //   console.log(error);
+    //   // setSent(false);
+    // }
     /* 
       owner.name
       owner.email
@@ -128,7 +154,12 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handl
   }, [activeStep]);
 
   return (
-    <Box className={"container-services-stepper"}>
+    <MotionBox 
+      className={"container-services-stepper"}
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: .8 }}
+    >
       <StepperTopBar
         completed={completed}
         activeStep={activeStep}
@@ -164,6 +195,6 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handl
           </Box>
         )}
       </>
-    </Box>
+    </MotionBox>
   );
 };
