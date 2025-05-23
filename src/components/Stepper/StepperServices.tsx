@@ -7,7 +7,12 @@ import { AllStepsCompleted } from "./components/AllStepsCompleted/AllStepsComple
 import { BottomSteperBar } from "./components/StepperBottomBar/StepperBottomBar";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { CurrentForm } from "./components/Forms/CurrentForm";
-import type { FormDataMap, HandleInputsForm, InputsFormServices, ServiceCard } from "../../types/service";
+import type {
+  FormDataMap,
+  HandleInputsForm,
+  InputsFormServices,
+  ServiceCard,
+} from "../../types/service";
 // import emailjs from "@emailjs/browser";
 // import { getEnvVariable } from "../../helper/helpers";
 import { MotionBox } from "../MotionComponents/MuiMotion";
@@ -19,17 +24,19 @@ type Props = {
   handleHideForm: () => void;
 };
 
-export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handleHideForm }) => {
+export const StepperServices: FC<Props> = ({
+  serviceSelected,
+  handleModal,
+  handleHideForm,
+}) => {
   const formRef = useRef<HTMLFormElement>(null);
-  const { 
-    control, 
-    handleSubmit, 
-    getValues, 
-    setError, 
-    formState: { 
-      errors,
-    }, 
-    clearErrors, 
+  const {
+    control,
+    handleSubmit,
+    getValues,
+    setError,
+    formState: { errors },
+    clearErrors,
   } = useForm<InputsFormServices>({
     defaultValues: {
       owner: {
@@ -56,7 +63,9 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handl
     [k: number]: boolean;
   }>({});
 
-  const currentForm = ['owner', 'vehicle', 'appointment'][activeStep] as keyof FormDataMap;
+  const currentForm = ["owner", "vehicle", "appointment"][
+    activeStep
+  ] as keyof FormDataMap;
   const totalSteps = () => steps.length;
 
   // ? return {number} amount of steps completed
@@ -81,19 +90,22 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handl
     setActiveStep(newActiveStep);
   };
 
-  const handleInputsDone = (form: HandleInputsForm) => Object.values(form).some(input => input.length > 0);
+  const handleInputsDone = (form: HandleInputsForm) =>
+    Object.values(form).some((input) => input.length > 0);
 
   const handleMessageError = () => {
     const isFormDone = handleInputsDone(getValues(currentForm));
-  
+
     if (!isFormDone) {
-      setError(currentForm, { message: "Please, complete the form before continue!" })
-      return true
+      setError(currentForm, {
+        message: "Please, complete the form before continue!",
+      });
+      return true;
     }
 
     clearErrors(currentForm);
-    return false
-  }
+    return false;
+  };
 
   const handleComplete = () => {
     if (handleMessageError()) return;
@@ -106,9 +118,9 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handl
   };
 
   const openServicePaymentTab = (url: string) => {
-    window.open(url, '_blank', 'noreferrer');
+    window.open(url, "_blank", "noreferrer");
   };
-  
+
   const onSubmit: SubmitHandler<InputsFormServices> = async () => {
     if (!formRef.current) return;
     // console.log(formRef.current)
@@ -143,16 +155,16 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handl
       appointment.time
       appointment.address
     */
-  }
+  };
 
   const handleOnSubmit = () => {
     if (handleMessageError()) return;
     handleSubmit(onSubmit)();
-  }
+  };
 
   // auto-scroll
   useEffect(() => {
-    if (formRef.current){
+    if (formRef.current) {
       formRef.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -161,23 +173,23 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handl
   }, [activeStep]);
 
   return (
-    <MotionBox 
+    <MotionBox
       className={"container-services-stepper"}
       initial={{ opacity: 0, x: 100 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: .8 }}
+      transition={{ duration: 0.8 }}
     >
-      <StepperTopBar
-        completed={completed}
-        activeStep={activeStep}
-      />
+      <StepperTopBar completed={completed} activeStep={activeStep} />
       <>
         {allStepsCompleted() ? (
-          <AllStepsCompleted handleHideForm={handleHideForm} />
+          <AllStepsCompleted
+            handleHideForm={handleHideForm}
+            username={getValues("owner.name")}
+          />
         ) : (
           <Box
             ref={formRef}
-            component={'form'}
+            component={"form"}
             onSubmit={handleSubmit(onSubmit)}
             sx={{ scrollMarginTop: "160px" }}
           >

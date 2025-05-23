@@ -3,10 +3,12 @@ import { MotionBox } from "../../../MotionComponents/MuiMotion";
 
 type AllStepsCompletedProps = {
   handleHideForm: () => void;
+  username: string;
 };
 
 export const AllStepsCompleted: React.FC<AllStepsCompletedProps> = ({
   handleHideForm,
+  username
 }) => {
   return (
     <>
@@ -24,7 +26,7 @@ export const AllStepsCompleted: React.FC<AllStepsCompletedProps> = ({
         />
         <h3 style={{ textAlign: "center" }}>All steps completed!</h3>
         <p>
-          Thanks {"username"} for choosing us! We'll get you back on the road in
+          Thanks {username} for choosing us! We'll get you back on the road in
           no time!
         </p>
         <strong>A team member will contact you shortly.</strong>
