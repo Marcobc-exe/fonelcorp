@@ -6,7 +6,8 @@ export type ServiceCard = {
   title: string;
   desc: string;
   alt: string;
-  handleShowForm: (service: ServiceCard) => void;
+  url: string;
+  // handleShowForm: (service: ServiceCard) => void;
 };
 
 export type Content = {

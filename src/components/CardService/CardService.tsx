@@ -11,7 +11,11 @@ import type { ServiceCard } from "../../types/service";
 import { MotionCard } from "../MotionComponents/MuiMotion";
 import { useInView } from "motion/react";
 
-export const CardService: FC<ServiceCard> = (service) => {
+type Props = ServiceCard & {
+  handleShowForm: (service: ServiceCard) => void;
+}
+
+export const CardService: FC<Props> = (service) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.6 });
   const theme = useTheme();

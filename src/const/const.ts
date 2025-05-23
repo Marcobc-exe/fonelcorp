@@ -8,6 +8,8 @@ export const listServiceCard: ServiceCard[] = [
     title: "Battery Boost",
     desc: "Car won’t start due to a dead battery? Our roadside assistance team offers fast, reliable jump start services 24/7 to get you back on the road. Available throughout Calgary & Edmonton.",
     alt: "battery boost roadside assistance service in Calgary and Edmonton",
+    url: "https://checkout.square.site/merchant/MLV6E9KC6R1Y8/checkout/RF6PE6RGWGNL2WLZQNDYWJ4N?src=sheet",
+    // handleShowForm: (service: ServiceCard) => {}
   },
   {
     id: 2,
@@ -15,6 +17,8 @@ export const listServiceCard: ServiceCard[] = [
     title: "Battery Replacement",
     desc: "Stuck with an old or faulty car battery? We come to you and replace your vehicle battery on the spot with a high-quality replacement. No towing needed.",
     alt: "battery replacement roadside assistance service in Calgary and Edmonton",
+    url: "",
+    // handleShowForm: (service: ServiceCard) => {}
   },
   {
     id: 3,
@@ -22,6 +26,8 @@ export const listServiceCard: ServiceCard[] = [
     title: "Tire Change",
     desc: "Flat tire on the highway or in your driveway? Our mobile tire change service brings the tools and expertise to replace or install your spare tire wherever you are.",
     alt: "flat tire roadside assistance service in Calgary and Edmonton",
+    url: "https://checkout.square.site/merchant/MLV6E9KC6R1Y8/checkout/WIE2NMZJVSQ4LDPOE6ZXTMKM?src=sheet",
+    // handleShowForm: (service: ServiceCard) => {}
   },
   {
     id: 4,
@@ -29,6 +35,8 @@ export const listServiceCard: ServiceCard[] = [
     title: "Lockout Service",
     desc: "Locked out of your car? Our professional lockout service helps you regain access to your vehicle quickly and safely — no damage, no stress.",
     alt: "lockout roadside assistance service in Calgary and Edmonton",
+    url: "https://checkout.square.site/merchant/MLV6E9KC6R1Y8/checkout/CQNJVZO5GAXZTRLQI7PJOZFE?src=sheet",
+    // handleShowForm: (service: ServiceCard) => {}
   },
   {
     id: 5,
@@ -36,6 +44,8 @@ export const listServiceCard: ServiceCard[] = [
     title: "Fuel Delivery",
     desc: "Out of gas and stuck on the road? We provide emergency fuel delivery directly to your location so you can keep moving without the wait or the hassle.",
     alt: "fuel delivery roadside assistance service in Calgary and Edmonton",
+    url: "https://checkout.square.site/merchant/MLV6E9KC6R1Y8/checkout/UBHUGNJI3IBJYBBCYIJDQQQX?src=sheet",
+    // handleShowForm: (service: ServiceCard) => {}
   },
 ];
 
@@ -120,37 +130,37 @@ export const seo = {
       fullTitle: "24/7 Roadside Assistance in Calgary & Edmonton | Fonel Corp",
       desc: "Stuck on the road? Fonel provides fast battery replacement, battery boost, fuel delivery, car lockout help, and tire changes – 24/7.",
       time: "24/7",
-      img: '/images/logo.png'
+      img: "/images/logo.png",
     },
     batteryBoost: {
       title: "Battery Boost in Calgary | Fonel",
       label: "battery boost",
       desc: "Car won’t start due to a dead battery? Our roadside assistance team offers fast, reliable jump start services 24/7 to get you back on the road. Available throughout Calgary & Edmonton.",
-      img: '/images/battery-boost-service.jpg'
+      img: "/images/battery-boost-service.jpg",
     },
     batteryReplacement: {
       title: "Battery Replacement Calgary | Fonel",
       label: "battery replacement",
       desc: "Stuck with an old or faulty car battery? We come to you and replace your vehicle battery on the spot with a high-quality replacement. No towing needed.",
-      img: '/images/battery-replace-service.jpg'
+      img: "/images/battery-replace-service.jpg",
     },
     fuelDelivery: {
       title: "Fuel Delivery Calgary | Fonel",
       label: "fuel delivery",
       desc: "Out of gas and stuck on the road? We provide emergency fuel delivery directly to your location so you can keep moving without the wait or the hassle.",
-      img: '/images/fuel-delivery-service.jpg'
+      img: "/images/fuel-delivery-service.jpg",
     },
     lockout: {
       title: "Car Lockout Help Calgary | Fonel",
       label: "lockout",
       desc: "Locked out of your car? Our professional lockout service helps you regain access to your vehicle quickly and safely — no damage, no stress.",
-      img: '/images/lockout-service.jpg'
+      img: "/images/lockout-service.jpg",
     },
     tireChange: {
       title: "Tire Change Service Calgary | Fonel",
       label: "tire change",
       desc: "Flat tire on the highway or in your driveway? Our mobile tire change service brings the tools and expertise to replace or install your spare tire wherever you are.",
-      img: '/images/tire-changes-service.jpg'
+      img: "/images/tire-changes-service.jpg",
     },
   },
 };

@@ -104,10 +104,16 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handl
     });
     handleNext();
   };
-  console.log(serviceSelected)
+
+  const openServicePaymentTab = (url: string) => {
+    window.open(url, '_blank', 'noreferrer');
+  };
+  
   const onSubmit: SubmitHandler<InputsFormServices> = async () => {
     if (!formRef.current) return;
     // console.log(formRef.current)
+    const currentService = serviceSelected?.url;
+    openServicePaymentTab(currentService!);
     handleComplete();
 
     // try {

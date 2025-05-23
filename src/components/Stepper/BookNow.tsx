@@ -49,6 +49,7 @@ export const BookNowTransition: FC<Props> = ({
               title={service.title}
               desc={service.desc}
               alt={service.alt}
+              url={service.url}
               handleShowForm={handleShowForm}
             />
           ))}
