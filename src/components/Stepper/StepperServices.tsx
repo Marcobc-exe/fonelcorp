@@ -11,6 +11,7 @@ import type { FormDataMap, HandleInputsForm, InputsFormServices, ServiceCard } f
 // import emailjs from "@emailjs/browser";
 // import { getEnvVariable } from "../../helper/helpers";
 import { MotionBox } from "../MotionComponents/MuiMotion";
+import dayjs from "dayjs";
 
 type Props = {
   serviceSelected: ServiceCard | null;
@@ -44,8 +45,8 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handl
         licensePlate: "",
       },
       appointment: {
-        date: "",
-        time: "",
+        date: dayjs(),
+        time: dayjs(),
         address: "",
       },
     },
@@ -103,10 +104,10 @@ export const StepperServices: FC<Props> = ({ serviceSelected, handleModal, handl
     });
     handleNext();
   };
-
+  console.log(serviceSelected)
   const onSubmit: SubmitHandler<InputsFormServices> = async () => {
     if (!formRef.current) return;
-    console.log(formRef.current)
+    // console.log(formRef.current)
     handleComplete();
 
     // try {

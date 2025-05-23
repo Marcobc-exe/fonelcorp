@@ -1,3 +1,5 @@
+import type { PickerValue } from "@mui/x-date-pickers/internals";
+
 export type ServiceCard = {
   id: number;
   image: string;
@@ -26,8 +28,8 @@ export type InputsFormServices = string & {
     licensePlate: string;
   };
   appointment: {
-    date: string;
-    time: string;
+    date: PickerValue;
+    time: PickerValue;
     address: string;
   };
 };
@@ -49,8 +51,8 @@ interface VehicleForm {
 }
 
 interface AppointmentForm {
-  date: string;
-  time: string;
+  date: PickerValue;
+  time: PickerValue;
   address: string;
 }
 
