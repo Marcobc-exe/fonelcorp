@@ -93,16 +93,16 @@ export const StepperServices: FC<Props> = ({
   };
 
   const handleInputsDone = (form: HandleInputsForm) =>
-    Object.values(form).some((input) => input.length > 0);
+    Object.values(form).some((input) => input.length === 0);
 
   const handleSetError = (message: string) => {
     setError(currentForm, { message });
   }
 
   const handleMessageError = () => {
-    const isFormDone = handleInputsDone(getValues(currentForm));
+    const isAnyEmpty = handleInputsDone(getValues(currentForm));
 
-    if (!isFormDone) {
+    if (isAnyEmpty) {
       handleSetError(message);
       return true;
     }
