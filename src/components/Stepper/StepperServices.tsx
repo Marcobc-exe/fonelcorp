@@ -13,8 +13,8 @@ import type {
   InputsFormServices,
   ServiceCard,
 } from "../../types/service";
-// import emailjs from "@emailjs/browser";
-// import { getEnvVariable } from "../../helper/helpers";
+import emailjs from "@emailjs/browser";
+import { getEnvVariable } from "../../helper/helpers";
 import { MotionBox } from "../MotionComponents/MuiMotion";
 import dayjs from "dayjs";
 
@@ -123,25 +123,22 @@ export const StepperServices: FC<Props> = ({
 
   const onSubmit: SubmitHandler<InputsFormServices> = async () => {
     if (!formRef.current) return;
-    // console.log(formRef.current)
     const currentService = serviceSelected?.url;
     openServicePaymentTab(currentService!);
     handleComplete();
 
-    // try {
-    //   const response = await emailjs.sendForm(
-    //     getEnvVariable("EMAIL_SERVICE_ID"),
-    //     getEnvVariable("EMAIL_TEMPLATE_ID"),
-    //     formRef.current,
-    //     getEnvVariable("EMAIL_PUBLIC_KEY")
-    //   );
+    try {
+      const response = await emailjs.sendForm(
+        getEnvVariable("EMAIL_SERVICE_ID"),
+        getEnvVariable("EMAIL_TEMPLATE_ID"),
+        formRef.current,
+        getEnvVariable("EMAIL_PUBLIC_KEY")
+      );
 
-    //   console.log(response);
-    //   // setSent(true);
-    // } catch (error) {
-    //   console.log(error);
-    //   // setSent(false);
-    // }
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
     /* 
       owner.name
       owner.email
