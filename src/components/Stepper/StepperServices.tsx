@@ -1,5 +1,5 @@
 import "./stepperServices.css";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { StepperTopBar } from "./components/StepperTopBar/StepperTopBar";
 import { useEffect, useRef, useState, type FC } from "react";
 import { message, steps } from "../../const/const";
@@ -29,6 +29,8 @@ export const StepperServices: FC<Props> = ({
   handleModal,
   handleHideForm,
 }) => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const formRef = useRef<HTMLFormElement>(null);
   const {
     control,
@@ -174,7 +176,7 @@ export const StepperServices: FC<Props> = ({
   return (
     <MotionBox
       className={"container-services-stepper"}
-      initial={{ opacity: 0, x: 100 }}
+      initial={{ opacity: 0, x: isMobile ? 50 : 100 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8 }}
     >
