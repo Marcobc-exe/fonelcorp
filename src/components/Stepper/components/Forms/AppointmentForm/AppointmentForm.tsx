@@ -114,7 +114,6 @@ export const AppointmentForm = <T extends FieldValues>({
           render={({ field: { value, onChange }}) => (
             <DesktopTimePicker
               name={`${name}.time` as Path<T>}
-              disablePast
               views={['hours', 'minutes']}
               value={value}
               onChange={onChange}
