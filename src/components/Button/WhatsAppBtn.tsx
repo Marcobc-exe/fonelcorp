@@ -4,7 +4,7 @@ import { WhatsApp } from "@mui/icons-material";
 import { type AnimationPlaybackControls } from "motion";
 import { useMotionValue, useMotionValueEvent, useScroll } from "motion/react";
 import { MotionButton, MotionDiv } from "../MotionComponents/MuiMotion";
-import { call } from "../../const/const";
+import { whatsAppLink } from "../../const/const";
 
 export const WhatsAppBtn = () => {
   const controlRef = useRef<AnimationPlaybackControls | null>(null);
@@ -18,7 +18,7 @@ export const WhatsAppBtn = () => {
   });
 
   return (
-    <a href={call}>
+    <a href={whatsAppLink}>
       <MotionButton
         className="btnWhatsapp"
         style={{ rotate }}

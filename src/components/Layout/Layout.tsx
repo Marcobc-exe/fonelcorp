@@ -1,3 +1,4 @@
+import '../Button/buttons.css'
 import { Box } from "@mui/material";
 import type { FC, ReactNode } from "react";
 import { Navbar } from "../Navbar/Navbar";
@@ -12,8 +13,10 @@ export const Layout: FC<Props> = ({ children }) => {
   return (
     <Box style={{ display: "flex", position: "relative", minHeight: "100vh" }}>
       <Navbar />
-      <CallNowBtn />
-      <WhatsAppBtn />
+      <div className="div-float-btns">
+        <WhatsAppBtn />
+        <CallNowBtn />
+      </div>
       <Box
         component={"main"}
         sx={{

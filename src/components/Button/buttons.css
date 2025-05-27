@@ -10,15 +10,17 @@
   border-radius: 50px;
   padding: 10px 5px;
   cursor: pointer;
-  position: fixed;
-  bottom: 3%;
-  left: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 30;
 }
 
-.btnWhatsapp {
-  bottom: 12%;
+.div-float-btns {
+  left: 15px;
+  bottom: 3%;
+  z-index: 30;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
