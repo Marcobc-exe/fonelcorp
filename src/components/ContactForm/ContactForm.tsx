@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, useMediaQuery, useTheme } from "@mui/material";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { Input } from "../Input/Input";
 import "./contactForm.css";
@@ -19,6 +19,8 @@ type Inputs = string & {
 };
 
 export const ContactForm = () => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const formRef = useRef<HTMLFormElement>(null);
   const { control, handleSubmit, reset } = useForm<Inputs>({
     defaultValues: {
@@ -109,7 +111,7 @@ export const ContactForm = () => {
             display={"flex"}
             flexDirection={"column"}
             gap={1.5}
-            initial={{ opacity: 0, x: -200 }}
+            initial={{ opacity: 0, x: isMobile ? -50 : -200 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true, amount: 0.4 }}
@@ -145,7 +147,7 @@ export const ContactForm = () => {
               label="Phone"
               variant="filled"
               fullWidth={true}
-              initial={{ opacity: 0, x: -200 }}
+              initial={{ opacity: 0, x: isMobile ? -50 : -200 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true, amount: 0.4 }}
@@ -168,7 +170,7 @@ export const ContactForm = () => {
               fullWidth={true}
               multiline={true}
               rows={4}
-              initial={{ opacity: 0, x: 200 }}
+              initial={{ opacity: 0, x: isMobile ? 50 : 200 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true, amount: 0.4 }}
