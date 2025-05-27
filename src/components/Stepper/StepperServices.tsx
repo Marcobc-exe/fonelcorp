@@ -139,7 +139,7 @@ export const StepperServices: FC<Props> = ({
         time: data.appointment.time?.format("HH:MM") ?? "",
       },
     }
-    console.log(form);
+    // console.log(form);
     openServicePaymentTab(currentService!);
     handleComplete();
 
@@ -147,7 +147,7 @@ export const StepperServices: FC<Props> = ({
       const response = await emailjs.send(
         getEnvVariable("VITE_EMAIL_SERVICE_ID"),
         getEnvVariable("VITE_SERVICE_EMAIL_TEMPLATE_ID"),
-        formRef.current,
+        form,
         {
           publicKey: getEnvVariable("VITE_EMAIL_PUBLIC_KEY"),
         }
