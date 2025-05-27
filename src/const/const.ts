@@ -164,3 +164,5 @@ export const seo = {
     },
   },
 };
+
+export const message = "Please, complete the form before continue!";

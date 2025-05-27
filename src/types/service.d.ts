@@ -15,7 +15,7 @@ export type Content = {
   target: string;
 };
 
-export type InputsFormServices = string & {
+export type InputsFormServices = {
   owner: {
     name: string;
     email: string;

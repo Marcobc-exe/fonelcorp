@@ -2,7 +2,7 @@ import "./stepperServices.css";
 import { Box } from "@mui/material";
 import { StepperTopBar } from "./components/StepperTopBar/StepperTopBar";
 import { useEffect, useRef, useState, type FC } from "react";
-import { steps } from "../../const/const";
+import { message, steps } from "../../const/const";
 import { AllStepsCompleted } from "./components/AllStepsCompleted/AllStepsCompleted";
 import { BottomSteperBar } from "./components/StepperBottomBar/StepperBottomBar";
 import { useForm, type SubmitHandler } from "react-hook-form";
@@ -93,13 +93,15 @@ export const StepperServices: FC<Props> = ({
   const handleInputsDone = (form: HandleInputsForm) =>
     Object.values(form).some((input) => input.length > 0);
 
+  const handleSetError = (message: string) => {
+    setError(currentForm, { message });
+  }
+
   const handleMessageError = () => {
     const isFormDone = handleInputsDone(getValues(currentForm));
 
     if (!isFormDone) {
-      setError(currentForm, {
-        message: "Please, complete the form before continue!",
-      });
+      handleSetError(message);
       return true;
     }
 
@@ -121,37 +123,37 @@ export const StepperServices: FC<Props> = ({
     window.open(url, "_blank", "noreferrer");
   };
 
-  const onSubmit: SubmitHandler<InputsFormServices> = async () => {
-    if (!formRef.current) return;
+  const onSubmit: SubmitHandler<InputsFormServices> = async (data) => {
+    if (!formRef.current) {
+      return handleSetError(message);
+    };
+
     const currentService = serviceSelected?.url;
+    const form = {
+      ...data,
+      appointment: {
+        ...data.appointment,
+        date: data.appointment.date?.format('MM/DD/YYYY') ?? "",
+        time: data.appointment.time?.format("HH:MM") ?? "",
+      },
+    }
+    console.log(form);
     openServicePaymentTab(currentService!);
     handleComplete();
 
     try {
-      const response = await emailjs.sendForm(
-        getEnvVariable("EMAIL_SERVICE_ID"),
-        getEnvVariable("EMAIL_TEMPLATE_ID"),
+      const response = await emailjs.send(
+        getEnvVariable("VITE_EMAIL_SERVICE_ID"),
+        getEnvVariable("VITE_SERVICE_EMAIL_TEMPLATE_ID"),
         formRef.current,
-        getEnvVariable("EMAIL_PUBLIC_KEY")
+        {
+          publicKey: getEnvVariable("VITE_EMAIL_PUBLIC_KEY"),
+        }
       );
-
       console.log(response);
     } catch (error) {
       console.log(error);
     }
-    /* 
-      owner.name
-      owner.email
-      owner.phone
-      vehicle.make
-      vehicle.model
-      vehicle.color
-      vehicle.year
-      vehicle.licensePlate
-      appointment.date
-      appointment.time
-      appointment.address
-    */
   };
 
   const handleOnSubmit = () => {

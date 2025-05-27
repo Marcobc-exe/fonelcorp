@@ -37,10 +37,10 @@ export const ContactForm = () => {
 
     try {
       const response = await emailjs.sendForm(
-        getEnvVariable("EMAIL_SERVICE_ID"),
-        getEnvVariable("EMAIL_TEMPLATE_ID"),
+        getEnvVariable("VITE_EMAIL_SERVICE_ID"),
+        getEnvVariable("VITE_EMAIL_TEMPLATE_ID"),
         formRef.current,
-        getEnvVariable("EMAIL_PUBLIC_KEY")
+        getEnvVariable("VITE_EMAIL_PUBLIC_KEY")
       );
 
       console.log(response);
