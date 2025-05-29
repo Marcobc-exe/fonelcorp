@@ -19,8 +19,8 @@ type Inputs = string & {
 };
 
 export const ContactForm = () => {
-  const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const formRef = useRef<HTMLFormElement>(null);
   const { control, handleSubmit, reset } = useForm<Inputs>({
     defaultValues: {
@@ -101,10 +101,17 @@ export const ContactForm = () => {
       <Box
         ref={formRef}
         component={"form"}
-        sx={{ justifyItems: "center" }}
         onSubmit={handleSubmit(onSubmit)}
+        display={"flex"}
+        justifyContent={"center"}
       >
-        <Grid container spacing={2} size={{ xs: 12, md: 6 }} maxWidth={850}>
+        <Grid
+          container
+          spacing={2}
+          size={{ xs: 12, md: 6 }}
+          maxWidth={850}
+          sx={{ width: "100%", justifyContent: "center" }}
+        >
           {/* Column left */}
           <MotionGrid
             size={{ xs: 12, sm: 12, md: 6 }}
