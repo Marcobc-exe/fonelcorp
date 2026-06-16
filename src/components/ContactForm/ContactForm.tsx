@@ -1,40 +1,61 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, useMediaQuery, useTheme } from "@mui/material";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { Input } from "../Input/Input";
-import { EmailOutlined, PhoneOutlined } from "@mui/icons-material";
-import { Button } from "../Button/Button";
 import "./contactForm.css";
 import { MotionGrid, MotionTypography } from "../MotionComponents/MuiMotion";
-import { email, phone, whatsAppLink } from "../../const/const";
 import { handleCopyEmail } from "../../func/functs";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { getEnvVariable } from "../../helper/helpers";
+import { ContactBtns } from "./ContactBtn";
+import { CustomSelect } from "../Select/Select";
 
-type Inputs = {
+type Inputs = string & {
   name: string;
   email: string;
   phone: string;
+  service: string;
   comment: string;
 };
 
 export const ContactForm = () => {
-  const {
-    control,
-    handleSubmit,
-    reset,
-    // formState: { errors },
-  } = useForm<Inputs>({
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const formRef = useRef<HTMLFormElement>(null);
+  const { control, handleSubmit, reset } = useForm<Inputs>({
     defaultValues: {
       name: "",
       email: "",
       phone: "",
+      service: "",
       comment: "",
     },
   });
   const [copied, setCopied] = useState<null | boolean>(null);
+  const [sent, setSent] = useState<null | boolean>(null);
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    reset(); // if successful email sent
-    console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async () => {
+    if (!formRef.current) return;
+
+    try {
+      const response = await emailjs.sendForm(
+        getEnvVariable("VITE_EMAIL_SERVICE_ID"),
+        getEnvVariable("VITE_EMAIL_TEMPLATE_ID"),
+        formRef.current,
+        getEnvVariable("VITE_EMAIL_PUBLIC_KEY")
+      );
+
+      console.log(response);
+      setSent(true);
+    } catch (error) {
+      console.log(error);
+      setSent(false);
+    } finally {
+      reset();
+      setTimeout(() => {
+        setSent(null);
+      }, 2000);
+    }
   };
 
   const handleNotifyEmail = async () => {
@@ -53,7 +74,10 @@ export const ContactForm = () => {
       component={"div"}
       bgcolor={"#FFF8E7"}
       paddingInline={"30px"}
-      paddingBlock={"50px"}
+      paddingBlock={{
+        xs: "30px",
+        md: "50px",
+      }}
       position={"relative"}
     >
       <MotionTypography
@@ -61,7 +85,11 @@ export const ContactForm = () => {
         variant="h2"
         textAlign={"center"}
         marginBottom={10}
-        marginTop={15}
+        marginTop={5}
+        sx={{
+          fontSize: { xs: "1.8rem", lg: "2rem" },
+          fontWeight: { xs: "bold" },
+        }}
         initial={{ opacity: 0, y: -60 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -71,20 +99,26 @@ export const ContactForm = () => {
       </MotionTypography>
 
       <Box
+        ref={formRef}
         component={"form"}
-        sx={{
-          // bgcolor: 'red',
-          justifyItems: "center",
-        }}
         onSubmit={handleSubmit(onSubmit)}
+        display={"flex"}
+        justifyContent={"center"}
       >
-        <Grid container spacing={2} size={{ xs: 12, md: 6 }} maxWidth={850}>
+        <Grid
+          container
+          spacing={2}
+          size={{ xs: 12, md: 6 }}
+          maxWidth={850}
+          sx={{ width: "100%", justifyContent: "center" }}
+        >
+          {/* Column left */}
           <MotionGrid
             size={{ xs: 12, sm: 12, md: 6 }}
             display={"flex"}
             flexDirection={"column"}
             gap={1.5}
-            initial={{ opacity: 0, x: -200 }}
+            initial={{ opacity: 0, x: isMobile ? -50 : -200 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true, amount: 0.4 }}
@@ -113,101 +147,67 @@ export const ContactForm = () => {
                 },
               }}
             />
-          </MotionGrid>
-          <Input
-            size={6}
-            control={control}
-            name="comment"
-            label="Comment"
-            variant="filled"
-            fullWidth={true}
-            multiline={true}
-            rows={4}
-            initial={{ opacity: 0, x: 200 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, amount: 0.4 }}
-          />
-          <Input
-            size={10}
-            control={control}
-            name="phone"
-            label="Phone"
-            variant="filled"
-            fullWidth={true}
-            initial={{ opacity: 0, x: -200 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, amount: 0.4 }}
-          />
-
-          <MotionGrid
-            size={{ xs: 12, sm: 12, md: 2 }}
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, amount: 0.4 }}
-          >
-            <button className="btnSend">Send</button>
+            <Input
+              size={12}
+              control={control}
+              name="phone"
+              label="Phone"
+              variant="filled"
+              fullWidth={true}
+              initial={{ opacity: 0, x: isMobile ? -50 : -200 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true, amount: 0.4 }}
+            />
           </MotionGrid>
 
+          {/* Column right */}
           <MotionGrid
-            // component={"div"}
-            size={{ xs: 12, sm: 12, md: 4 }}
-            bgcolor={"#FFF1CE"}
-            borderRadius={"15px"}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, amount: 0.4 }}
+            size={{ xs: 12, sm: 12, md: 6 }}
+            display={"flex"}
+            flexDirection={"column"}
+            gap={1.5}
           >
-            <Button startIcon={<PhoneOutlined />} href="tel:+14034661621">
-              {phone}
-            </Button>
-          </MotionGrid>
+            <Input
+              size={12}
+              control={control}
+              name="comment"
+              label="Comment"
+              variant="filled"
+              fullWidth={true}
+              multiline={true}
+              rows={4}
+              initial={{ opacity: 0, x: isMobile ? 50 : 200 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true, amount: 0.4 }}
+            />
 
-          <MotionGrid
-            // as ={"div"}
-            size={{ xs: 12, sm: 12, md: 4 }}
-            bgcolor={"#FFF1CE"}
-            borderRadius={"15px"}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, amount: 0.4 }}
-          >
-            <Button
-              startIcon={<EmailOutlined />}
-              onClick={() => handleNotifyEmail()}
+            <MotionGrid
+              size={12}
+              display={"flex"}
+              flexDirection={"row"}
+              gap={1.5}
             >
-              {copied === true && "Copied!"}
-              {copied === false && "Error!"}
-              {copied === null && email}
-            </Button>
+              <CustomSelect control={control} size={9} name={"service"} />
+
+              <MotionGrid
+                size={{ xs: 12, sm: 12, md: 3 }}
+                initial={{ opacity: 0, x: 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true, amount: 0.4 }}
+              >
+                <button className="btnSend">
+                  {sent === null && "Send"}
+                  {sent === true && "Sent!"}
+                  {sent === false && "Error!"}
+                </button>
+              </MotionGrid>
+            </MotionGrid>
           </MotionGrid>
 
-          <MotionGrid
-            // component={"div"}
-            size={{ xs: 12, sm: 12, md: 4 }}
-            bgcolor={"#FFF1CE"}
-            borderRadius={"15px"}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, amount: 0.4 }}
-          >
-            <button className="btnContactForm">
-              <a href={whatsAppLink} target="_blank">
-                <Box
-                  component="img"
-                  src="./images/whatsapp-line.svg"
-                  alt="WhatsApp"
-                  sx={{ color: "#25D366", width: 20, height: 20 }}
-                />
-                WhatsApp
-              </a>
-            </button>
-          </MotionGrid>
+          <ContactBtns copied={copied} handleNotifyEmail={handleNotifyEmail} />
         </Grid>
       </Box>
     </Box>

@@ -8,4 +8,6 @@ export type ReasonService = {
   id: number;
   title: string;
   desc: string;
+  src: string;
+  alt: string;
 }

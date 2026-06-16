@@ -1,0 +1,21 @@
+.img-areas-covered {
+    width: 450px;
+  }
+
+@media (max-width: 600px) {
+  .img-areas-covered {
+    width: 300px;
+  }
+}
+
+@media (max-width: 400px) {
+  .img-areas-covered {
+    width: 270px;
+  }
+}
+
+@media (max-width: 360px) {
+  .img-areas-covered {
+    width: 230px;
+  }
+}

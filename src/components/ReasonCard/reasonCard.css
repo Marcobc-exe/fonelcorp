@@ -1,0 +1,20 @@
+.img-reason-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  display: flex;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.h3-reason-title {
+  color: #f89a2d;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0;
+}
+
+.p-reason-desc {
+  color: #294971;
+  width: 240px;
+}

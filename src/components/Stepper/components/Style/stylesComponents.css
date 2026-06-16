@@ -1,0 +1,11 @@
+.icon-top > path {
+  color: white;
+}
+
+.icon-top.false > path {
+  color: #1F355E;
+}
+
+.icon-top-checked > path {
+  color: white;
+}

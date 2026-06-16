@@ -1,3 +1,4 @@
+import "./reasonCard.css";
 import type { FC } from "react";
 import type { ReasonService } from "../../types/iconService";
 import { MotionBox } from "../MotionComponents/MuiMotion";
@@ -12,30 +13,16 @@ export const ReasonCard: FC<ReasonService> = (reason) => {
         flexWrap: "wrap",
         justifyContent: "center",
         textAlign: "center",
+        // bgcolor: 'green'
       }}
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true, amount: 0.4 }}
     >
-      <p
-        style={{
-          color: "#F89A2D",
-          fontWeight: "bold",
-          fontSize: 20,
-          margin: 0,
-        }}
-      >
-        {reason.title}
-      </p>
-      <p
-        style={{
-          color: "#294971",
-          width: 240,
-        }}
-      >
-        {reason.desc}
-      </p>
+      <img className="img-reason-image" src={reason.src} alt={reason.alt} />
+      <h3 className="h3-reason-title">{reason.title}</h3>
+      <p className="p-reason-desc">{reason.desc}</p>
     </MotionBox>
   );
 };

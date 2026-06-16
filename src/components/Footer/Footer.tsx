@@ -2,7 +2,7 @@ import { Box, Button, Grid } from "@mui/material";
 import { Typography } from "../Typography/Typography";
 import { EmailOutlined, PhoneOutlined } from "@mui/icons-material";
 import "./footer.css";
-import { about, email, phone, whatsAppLink } from "../../const/const";
+import { about, call, email, phone, whatsAppLink } from "../../const/const";
 import { useState, type FC } from "react";
 import { handleCopyEmail } from "../../func/functs";
 
@@ -74,7 +74,7 @@ export const Footer: FC<Props> = ({ handleModal }) => {
           <Button
             id="btnContact"
             startIcon={<PhoneOutlined />}
-            href="tel:+14034661621"
+            href={call}
           >
             {phone}
           </Button>

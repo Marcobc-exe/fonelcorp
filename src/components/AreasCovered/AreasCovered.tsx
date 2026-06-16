@@ -1,3 +1,4 @@
+import './areasCovered.css'
 import { Box } from "@mui/material";
 import { MotionImg, MotionTypography } from "../MotionComponents/MuiMotion";
 
@@ -7,7 +8,10 @@ export const AreasCovered = () => {
       component={"div"}
       bgcolor={"#FFF8E7"}
       paddingInline={"30px"}
-      paddingBlock={"50px"}
+      paddingBlock={{
+        xs: '30px',
+        md: "50px"
+      }}
     >
       <MotionTypography
         id={"areas"}
@@ -18,6 +22,7 @@ export const AreasCovered = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true, amount: 0.4 }}
+        sx={{ fontSize: { xs: "1.8rem", lg: '2rem' }, fontWeight: { xs: "bold" } }}
       >
         AREAS COVERED
       </MotionTypography>
@@ -34,19 +39,19 @@ export const AreasCovered = () => {
         }}
       >
         <MotionImg
+          className="img-areas-covered"
           src={"./images/calgary-map.jpg"}
-          style={{ width: window.innerWidth < 380 ? "300px" : "450px" }}
-          initial={{ x: '-40%' }}
+          alt='calgary-roadside-assistance-service'
+          initial={{ x: "-40%" }}
           whileInView={{ x: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true, amount: 0.3 }}
         />
         <MotionImg
+          className="img-areas-covered"
           src={"./images/edmonton-map.jpg"}
-          style={{
-            width: window.innerWidth < 380 ? "300px" : "450px",
-          }}
-          initial={{ x: '40%' }}
+          alt='edmonton-roadside-assistance-service'
+          initial={{ x: "40%" }}
           whileInView={{ x: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true, amount: 0.3 }}
